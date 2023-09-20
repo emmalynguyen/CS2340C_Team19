@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dungeon_Crawler</string>
+    <string name="easy">Easy</string>
 </resources>
