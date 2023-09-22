@@ -21,20 +21,16 @@ public class MainActivity extends AppCompatActivity {
             RadioGroup difficultyRadioGroup = findViewById(R.id.difficultyRadioGroup);
             double difficulty = 1;
 
-            switch (difficultyRadioGroup.getCheckedRadioButtonId()) {
-                case R.id.easy:
-                    difficulty = 0.5;
-                    break;
-                case R.id.radioMedium:
-                    difficulty = 0.75;
-                    break;
-                case R.id.radioHard:
-                    difficulty = 1;
-                    break;
-                default:
-                    difficulty = 0.5;
-                    break;
+            if (difficultyRadioGroup.getCheckedRadioButtonId() == R.id.easy) {
+                difficulty = 0.5;
+            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioMedium) {
+                difficulty = .75;
+            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
+                difficulty = 1;
+            } else {
+                difficulty = 1;
             }
+
             Intent game = new Intent(MainActivity.this, GameActivity.class);
             game.putExtra("difficulty", difficulty);
             startActivity(game);
