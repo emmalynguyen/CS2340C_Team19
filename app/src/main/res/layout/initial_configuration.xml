@@ -1,27 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/gameLayout"
-    tools:context=".GameActivity">
+    android:background="@color/brick_blue"
+    android:screenOrientation="landscape"
+    tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/gameView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    <!--        app:layout_constraintTop_toBottomOf="@+id/difficultyRadioGroup" />-->
 
-    <TextView
-        android:id="@+id/dotCountTextView"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="849dp"
+        android:layout_height="526dp"
+        app:srcCompat="@drawable/dungeon_background"
+        tools:layout_editor_absoluteX="-59dp"
+        tools:layout_editor_absoluteY="-56dp"
+        android:scaleX="1.26"
+        android:scaleY="1.2"
+        android:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10000dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Dots Collected: 0"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginStart="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="128dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
+        android:text="Start"
+        android:textColor="@color/white"
+        app:iconTint="#AB0009"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:fontFamily="@font/vt323"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
+        android:text="Welcome!"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
