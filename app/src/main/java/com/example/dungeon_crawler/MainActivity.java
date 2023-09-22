@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
         //startBtn.setOnClickListener(v -> {
 
 
-            Intent game = new Intent(MainActivity.this, GameActivity.class);
-            game.putExtra("difficulty", difficulty);
-            startActivity(game);
-            finish();
-        });
+//            Intent game = new Intent(MainActivity.this, GameActivity.class);
+//            //game.putExtra("difficulty", difficulty);
+//            startActivity(game);
+//            finish();
+//        });
     }
 }

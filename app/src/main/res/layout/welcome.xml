@@ -19,7 +19,6 @@
         tools:layout_editor_absoluteY="-56dp"
         android:scaleX="1.26"
         android:scaleY="1.2"
-        android:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="10000dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
