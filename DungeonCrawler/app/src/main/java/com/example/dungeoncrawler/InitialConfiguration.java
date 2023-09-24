@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.EditText;
 
 public class InitialConfiguration extends AppCompatActivity {
 
@@ -21,10 +22,11 @@ public class InitialConfiguration extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        Button startButton = findViewById(R.id.startButton);
-        Button exitButton = findViewById(R.id.exitButton);
 
-        startButton.setOnClickListener(v -> {
+        Button nextButton = findViewById(R.id.nextButton);
+
+
+        nextButton.setOnClickListener(v -> {
             RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
             double difficulty = 1;
             RadioButton radioEasy = findViewById(R.id.radioEasy);
@@ -47,11 +49,13 @@ public class InitialConfiguration extends AppCompatActivity {
 
 
 
-        exitButton.setOnClickListener(v -> {
+        nextButton.setOnClickListener(v -> {
             // Finish the current activity to exit the app
             finish();
             // Alternatively, you can use System.exit(0) to forcefully exit the app
             // System.exit(0)
         });
+        EditText editTextName;
+        editTextName = findViewById(R.id.editTextName);
     }
 }
