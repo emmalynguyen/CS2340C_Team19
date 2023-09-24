@@ -22,22 +22,7 @@ public class Welcome extends AppCompatActivity {
         Button startButton = findViewById(R.id.startButton);
 
         startButton.setOnClickListener(v -> {
-            RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
-            double difficulty = 1;
-            RadioButton radioEasy = findViewById(R.id.radioEasy);
-            radioEasy.setChecked(true);
-
-            if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
-                difficulty = 1;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioMedium) {
-                difficulty = 2;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
-                difficulty = 3;
-            }
-
-
             Intent game = new Intent(Welcome.this, InitialConfiguration.class);
-            game.putExtra("difficulty", difficulty);
             startActivity(game);
             finish();
         });
