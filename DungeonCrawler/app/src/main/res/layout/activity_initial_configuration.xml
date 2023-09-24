@@ -60,7 +60,7 @@
     </RadioGroup>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/radioGroupCharacter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -80,6 +80,7 @@
             android:checked="true"
             android:text="Eldric" />
 
+        
         <RadioButton
             android:id="@+id/radioVaris"
             android:layout_width="wrap_content"
@@ -93,17 +94,7 @@
             android:text="Lyria" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
-        android:text="Start"
-        android:textColor="@color/teal_200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText" />
+
     <Button
         android:id="@+id/exitButton"
         android:layout_width="wrap_content"
@@ -112,8 +103,8 @@
         android:text="Exit"
         android:textColor="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/radioGroupCharacter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

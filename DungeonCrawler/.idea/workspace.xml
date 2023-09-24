@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c67ecc98-54b9-45d0-9ec3-904bf80fe02d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/female_elf.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dungeoncrawler/InitialConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dungeoncrawler/InitialConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_initial_configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_initial_configuration.xml" afterDir="false" />
@@ -32,6 +33,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Vqeg6dKUUBvJz9qpi5HHxRzXoy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

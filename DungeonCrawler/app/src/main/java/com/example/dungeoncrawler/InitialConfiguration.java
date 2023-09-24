@@ -39,7 +39,7 @@ public class InitialConfiguration extends AppCompatActivity {
             }
 
 
-            Intent game = new Intent(Welcome.this, InitialConfiguration.class);
+            Intent game = new Intent(InitialConfiguration.this, GameScene.class);
             game.putExtra("difficulty", difficulty);
             startActivity(game);
             finish();
