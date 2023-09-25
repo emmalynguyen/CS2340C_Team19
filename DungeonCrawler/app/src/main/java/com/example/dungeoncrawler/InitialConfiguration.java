@@ -24,9 +24,9 @@ public class InitialConfiguration extends AppCompatActivity {
 
         nextButton.setOnClickListener(v -> {
             RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
-            double difficulty;
+            int difficulty;
             String difficultyLevel;
-            double health;
+            int health;
             int sprite;
 
             if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
@@ -65,9 +65,9 @@ public class InitialConfiguration extends AppCompatActivity {
 
             Bundle extras = new Bundle();
             extras.putString("name", username);
-            extras.putDouble("difficulty", difficulty);
+            extras.putInt("difficulty", difficulty);
             extras.putInt("sprite", sprite);
-            extras.putDouble("health", health);
+            extras.putInt("health", health);
             extras.putString("DifficultyLevel", difficultyLevel);
 
             Intent game = new Intent(InitialConfiguration.this, GameScene.class);

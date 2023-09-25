@@ -12,12 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameScene extends AppCompatActivity {
-
-    String username;
-    double difficulty;
-    int sprite;
-    double health;
-    String difficultyLevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +24,13 @@ public class GameScene extends AppCompatActivity {
         Bundle extras = intent.getExtras();
 
         String username = extras.getString("name");
-        double difficulty = extras.getDouble("difficulty");
+        int difficulty = extras.getInt("difficulty");
         int sprite = extras.getInt("sprite");
-        double health = extras.getDouble("health");
+        int health = extras.getInt("health");
         String difficultyLevel = extras.getString("DifficultyLevel");
 
-
-
         TextView nameTextView = findViewById(R.id.nameText);
-        nameTextView.setText(username);
+        nameTextView.setText("Hi " + username);
 
         ImageView spriteView = findViewById(R.id.spriteView);
         if(sprite == 1) {
@@ -49,30 +41,17 @@ public class GameScene extends AppCompatActivity {
             spriteView.setImageResource(R.drawable.female_dwarf);
         }
 
-
         TextView difficultyTextView = findViewById(R.id.difficultyText);
-        difficultyTextView.setText("" + difficulty);
+        difficultyTextView.setText("Difficulty level " + difficulty + ": " + difficultyLevel);
 
         TextView healthTextView = findViewById(R.id.healthText);
-        healthTextView.setText("" + health);
-//
-//        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-//        TextView difficulty = findViewById(R.id.inputText);
-//        difficulty.setText("Your Name"); //update with their name
-//
-//        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-//        TextView health = findViewById(R.id.inputText);
-//        health.setText("Your Name"); //update with their name
+        healthTextView.setText("You have " + health + " health");
 
         Button endingButton = findViewById(R.id.endingButton);
 
         endingButton.setOnClickListener(v -> {
             Intent ending = new Intent(GameScene.this, Ending.class);
-
-            // Start SecondActivity
             startActivity(ending);
-
-            // Finish the current activity if needed
             finish();
         });
     }
