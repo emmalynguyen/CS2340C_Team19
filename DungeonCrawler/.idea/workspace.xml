@@ -93,7 +93,7 @@
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Android App.GameScene">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="GameScene" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
       <module name="DungeonCrawler.app.main" />
       <option name="DEPLOY" value="true" />

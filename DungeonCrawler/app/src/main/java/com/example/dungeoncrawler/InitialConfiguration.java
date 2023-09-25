@@ -23,13 +23,14 @@ public class InitialConfiguration extends AppCompatActivity {
         Button nextButton = findViewById(R.id.nextButton);
 
         nextButton.setOnClickListener(v -> {
+
             RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
             double difficulty;
             String difficultyLevel;
             double health;
             int sprite;
 
-            if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
+            if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
                 difficultyLevel ="Hard";
                 difficulty = 3;
                 health = 50;
@@ -37,7 +38,7 @@ public class InitialConfiguration extends AppCompatActivity {
                 difficultyLevel = "Medium";
                 difficulty = 2;
                 health = 75;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
+            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
                 difficultyLevel = "Easy";
                 difficulty = 1;
                 health = 100;
@@ -74,6 +75,7 @@ public class InitialConfiguration extends AppCompatActivity {
             game.putExtras(extras);
             startActivity(game);
             finish();
+
         });
     }
 }
