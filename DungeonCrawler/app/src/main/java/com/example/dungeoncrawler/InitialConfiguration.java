@@ -23,17 +23,16 @@ public class InitialConfiguration extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-
         Button nextButton = findViewById(R.id.nextButton);
-
 
         nextButton.setOnClickListener(v -> {
             RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
-            double difficulty = 1;
+            double difficulty;
             String difficultyLevel;
             double health;
-            RadioButton radioEasy = findViewById(R.id.radioEasy);
-            radioEasy.setChecked(true);
+            int sprite;
+            //RadioButton radioEasy = findViewById(R.id.radioEasy);
+            //radioEasy.setChecked(true);
 
             if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
                 difficultyLevel ="Hard";
@@ -47,6 +46,17 @@ public class InitialConfiguration extends AppCompatActivity {
                 difficultyLevel = "Easy";
                 difficulty = 1;
                 health = 100;
+            } else {
+                return;
+            }
+
+            RadioGroup spriteRadioGroup = findViewById(R.id.radioGroupCharacter);
+            if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioEldric) {
+                sprite = 1;
+            } else if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioVaris) {
+                sprite = 2;
+            } else if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioLyria) {
+                sprite = 3;
             } else {
                 return;
             }
@@ -74,10 +84,9 @@ public class InitialConfiguration extends AppCompatActivity {
 
 
         nextButton.setOnClickListener(v -> {
-            // Finish the current activity to exit the app
+            Intent game = new Intent(InitialConfiguration.this, GameScene.class);
+            startActivity(game);
             finish();
-            // Alternatively, you can use System.exit(0) to forcefully exit the app
-            // System.exit(0)
         });
 
         //EditText n= findViewById(R.id.textView);
