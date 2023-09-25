@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameScene extends AppCompatActivity {
@@ -34,13 +35,26 @@ public class GameScene extends AppCompatActivity {
         double health = extras.getDouble("health");
         String difficultyLevel = extras.getString("DifficultyLevel");
 
-        Log.d("tag", "Username: " + username);
+
 
         TextView nameTextView = findViewById(R.id.nameText);
         nameTextView.setText(username);
 
-        TextView nameTextView = findViewById(R.id.nameText);
-        nameTextView.setText(username);
+        ImageView spriteView = findViewById(R.id.spriteView);
+        if(sprite == 1) {
+            spriteView.setImageResource(R.drawable.male_elf);
+        } else if(sprite == 2) {
+            spriteView.setImageResource(R.drawable.female_wizard);
+        } else if(sprite == 3) {
+            spriteView.setImageResource(R.drawable.female_dwarf);
+        }
+
+
+        TextView difficultyTextView = findViewById(R.id.difficultyText);
+        difficultyTextView.setText("" + difficulty);
+
+        TextView healthTextView = findViewById(R.id.healthText);
+        healthTextView.setText("" + health);
 //
 //        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
 //        TextView difficulty = findViewById(R.id.inputText);
