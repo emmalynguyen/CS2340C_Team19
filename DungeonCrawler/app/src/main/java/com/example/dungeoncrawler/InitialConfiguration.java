@@ -12,9 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class InitialConfiguration extends AppCompatActivity {
-
-    private double difficulty;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +28,6 @@ public class InitialConfiguration extends AppCompatActivity {
             String difficultyLevel;
             double health;
             int sprite;
-            //RadioButton radioEasy = findViewById(R.id.radioEasy);
-            //radioEasy.setChecked(true);
 
             if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
                 difficultyLevel ="Hard";
@@ -76,25 +71,9 @@ public class InitialConfiguration extends AppCompatActivity {
             extras.putString("DifficultyLevel", difficultyLevel);
 
             Intent game = new Intent(InitialConfiguration.this, GameScene.class);
-            game.putExtra("difficulty", difficulty);
+            game.putExtras(extras);
             startActivity(game);
             finish();
         });
-
-
-
-        nextButton.setOnClickListener(v -> {
-            Intent game = new Intent(InitialConfiguration.this, GameScene.class);
-            startActivity(game);
-            finish();
-        });
-
-        //EditText n= findViewById(R.id.textView);
-
-
-        //findViewById(R.id.inputText);
-
-        //String playerName = editTextName.getText().toString().trim();
-
     }
 }
