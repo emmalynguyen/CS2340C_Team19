@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 public class Welcome extends AppCompatActivity {
 
@@ -22,22 +20,7 @@ public class Welcome extends AppCompatActivity {
         Button startButton = findViewById(R.id.startButton);
 
         startButton.setOnClickListener(v -> {
-            RadioGroup difficultyRadioGroup = findViewById(R.id.radioGroup);
-            double difficulty = 1;
-            RadioButton radioEasy = findViewById(R.id.radioEasy);
-            radioEasy.setChecked(true);
-
-            if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
-                difficulty = 1;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioMedium) {
-                difficulty = 2;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
-                difficulty = 3;
-            }
-
-
             Intent game = new Intent(Welcome.this, InitialConfiguration.class);
-            game.putExtra("difficulty", difficulty);
             startActivity(game);
             finish();
         });
@@ -45,10 +28,7 @@ public class Welcome extends AppCompatActivity {
         Button exitButton = findViewById(R.id.exitButton);
 
         exitButton.setOnClickListener(v -> {
-                // Finish the current activity to exit the app
-                finish();
-                // Alternatively, you can use System.exit(0) to forcefully exit the app
-                // System.exit(0)
+            finish();
         });
     }
 }
