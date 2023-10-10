@@ -1,4 +1,4 @@
-package com.example.dungeoncrawler;
+package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.example.dungeoncrawler.R;
 
 public class Welcome extends AppCompatActivity {
 

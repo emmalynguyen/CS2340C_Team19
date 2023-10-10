@@ -13,16 +13,19 @@
         android:theme="@style/Theme.DungeonCrawler"
         tools:targetApi="31">
         <activity
-            android:name=".Ending"
+            android:name=".views.Ending"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".GameScene"
+            android:name=".views.GameScene"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".InitialConfiguration"
+            android:name=".views.InitialConfiguration"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".Welcome"
+            android:name=".views.Welcome"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>
