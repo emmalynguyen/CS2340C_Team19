@@ -1,4 +1,4 @@
-package com.example.dungeoncrawler;
+package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.dungeoncrawler.R;
 
 public class InitialConfiguration extends AppCompatActivity {
     @Override

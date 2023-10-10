@@ -1,15 +1,15 @@
-package com.example.dungeoncrawler;
+package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dungeoncrawler.R;
 
 public class GameScene extends AppCompatActivity {
     @Override
