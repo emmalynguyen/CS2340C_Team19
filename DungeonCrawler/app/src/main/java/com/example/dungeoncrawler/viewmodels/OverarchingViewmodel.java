@@ -20,10 +20,11 @@ public class OverarchingViewmodel {
     }
 
     public static int decreaseScore(int decrease){
+        score.decrement(decrease);
         if(score.getCount() <= 0) {
-            decrease = 0;
+            score.setCount(0);
         }
-        return score.decrement(decrease);
+        return score.getCount();
     }
 
     public static void setPlayerSprite(int sprite) {
@@ -48,6 +49,12 @@ public class OverarchingViewmodel {
     public static void addScore(String username){
         Leaderboard.getLeaderboard().addScore(username, score.getCount());
         score.resetCount();
+    }
+    public static String[] getLeaderboardNames(){
+        return leaderboard.getNames();
+    }
+    public static int[] getLeaderboardScores(){
+        return leaderboard.getScores();
     }
 
 
