@@ -11,41 +11,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
-import com.example.dungeoncrawler.models.Leaderboard;
-import com.example.dungeoncrawler.models.Player;
-import com.example.dungeoncrawler.models.Score;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
-public class GameScene extends AppCompatActivity {
+public class GameSceneEasy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_scene);
+        setContentView(R.layout.activity_game_easy);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
 
         String username = OverarchingViewmodel.getPlayerName();
-        int difficulty = extras.getInt("difficulty");
+        int difficulty = OverarchingViewmodel.getPlayerDifficulty();
         int health = OverarchingViewmodel.getPlayerHealth();
-        String difficultyLevel = extras.getString("DifficultyLevel");
+        String difficultyLevel = OverarchingViewmodel.getPlayerDifficultyName();
 
         TextView nameTextView = findViewById(R.id.nameText);
         nameTextView.setText("Hi " + username);
 
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
-//        if(sprite == 1) {
-//            spriteView.setImageResource(R.drawable.male_elf);
-//        } else if(sprite == 2) {
-//            spriteView.setImageResource(R.drawable.female_wizard);
-//        } else if(sprite == 3) {
-//            spriteView.setImageResource(R.drawable.female_dwarf);
-//        }
 
         TextView difficultyTextView = findViewById(R.id.difficultyText);
         difficultyTextView.setText("Difficulty level " + difficulty + ": " + difficultyLevel);
@@ -53,12 +41,25 @@ public class GameScene extends AppCompatActivity {
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
-        Button endingButton = findViewById(R.id.endingButton);
-
-        endingButton.setOnClickListener(v -> {
+        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+        leaderboardButton.setOnClickListener(v -> {
             OverarchingViewmodel.addScore(username);
-            Intent ending = new Intent(GameScene.this, Ending.class);
-            startActivity(ending);
+            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
+            startActivity(leaderboard);
+            finish();
+        });
+
+        Button mediumButton = findViewById(R.id.mediumButton);
+        mediumButton.setOnClickListener(v -> {
+            Intent mediumGame = new Intent(GameSceneEasy.this, GameSceneMedium.class);
+            startActivity(mediumGame);
+            finish();
+        });
+
+        Button hardButton = findViewById(R.id.hardButton);
+        hardButton.setOnClickListener(v -> {
+            Intent hardGame = new Intent(GameSceneEasy.this, GameSceneHard.class);
+            startActivity(hardGame);
             finish();
         });
 

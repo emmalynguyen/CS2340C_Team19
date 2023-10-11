@@ -10,7 +10,6 @@ import android.widget.RadioGroup;
 import android.widget.EditText;
 
 import com.example.dungeoncrawler.R;
-import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class InitialConfiguration extends AppCompatActivity {
@@ -64,16 +63,21 @@ public class InitialConfiguration extends AppCompatActivity {
             }
             username = inputBox.getText().toString();
 
-            Bundle extras = new Bundle();
-            extras.putInt("difficulty", difficulty);
-            extras.putString("DifficultyLevel", difficultyLevel);
-
+            OverarchingViewmodel.setPlayerDifficulty(difficulty);
+            OverarchingViewmodel.setPlayerDifficultyName(difficultyLevel);
             OverarchingViewmodel.setPlayerHealth(health);
             OverarchingViewmodel.setPlayerName(username);
 
-            Intent game = new Intent(InitialConfiguration.this, GameScene.class);
-            game.putExtras(extras);
-            startActivity(game);
+            if (difficulty == 1) {
+                Intent gameEasy = new Intent(InitialConfiguration.this, GameSceneEasy.class);
+                startActivity(gameEasy);
+            } else if (difficulty == 2) {
+                Intent gameMedium = new Intent(InitialConfiguration.this, GameSceneMedium.class);
+                startActivity(gameMedium);
+            } else if (difficulty == 3) {
+                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
+                startActivity(gameHard);
+            }
             finish();
         });
     }

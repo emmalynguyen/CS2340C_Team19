@@ -17,7 +17,15 @@
             android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".views.GameScene"
+            android:name=".views.GameSceneEasy"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
+            android:name=".views.GameSceneMedium"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
+            android:name=".views.GameSceneHard"
             android:screenOrientation="landscape"
             android:exported="false" />
         <activity
