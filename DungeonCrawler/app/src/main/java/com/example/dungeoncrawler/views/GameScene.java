@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
+import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.models.Score;
 
 public class GameScene extends AppCompatActivity {
     @Override
@@ -22,6 +25,7 @@ public class GameScene extends AppCompatActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
         Player player = Player.getPlayer();
+        Score score = Score.getScore();
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -53,9 +57,24 @@ public class GameScene extends AppCompatActivity {
         Button endingButton = findViewById(R.id.endingButton);
 
         endingButton.setOnClickListener(v -> {
+            Leaderboard.getLeaderboard().addScore(username, score.getCount());
+            score.resetCount();
             Intent ending = new Intent(GameScene.this, Ending.class);
             startActivity(ending);
             finish();
         });
+
+        TextView scoreText = findViewById(R.id.scoreText);
+        new CountDownTimer(100000, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                scoreText.setText("Score: " + score.decrement(1));
+            }
+
+            @Override
+            public void onFinish() {}
+
+        }.start();
     }
 }
