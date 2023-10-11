@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Score;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class Ending extends AppCompatActivity {
 
@@ -22,10 +23,9 @@ public class Ending extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        Leaderboard leaderboard = Leaderboard.getLeaderboard();
 
-        String[] names = leaderboard.getNames();
-        int[] scores = leaderboard.getScores();
+        String[] names = OverarchingViewmodel.getLeaderboardNames();
+        int[] scores = OverarchingViewmodel.getLeaderboardScores();
 
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
