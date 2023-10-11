@@ -1,12 +1,13 @@
 package com.example.dungeoncrawler;
 
-import org.junit.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.example.dungeoncrawler.models.Leaderboard;
+import com.example.dungeoncrawler.models.Score;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
-public class LeaderboardTests {
+public class UnitTests {
     @Test
     public void LeaderboardBasic() {
         Leaderboard leaderboard = com.example.dungeoncrawler.models.Leaderboard.getLeaderboard();
@@ -44,6 +45,17 @@ public class LeaderboardTests {
         }
 
         assertArrayEquals(testArray, scores);
+    }
+
+    @Test
+    public void ScoreMinimum(){
+        Score score = Score.getScore();
+        new OverarchingViewmodel();
+
+        assertEquals(100, score.getCount());
+
+        OverarchingViewmodel.decreaseScore(150);
+        assertEquals(0, score.getCount());
     }
 
 }

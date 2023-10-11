@@ -62,6 +62,11 @@ public class OverarchingViewmodel {
         return player.getDifficultyName();
     }
 
-
+    public static String[] getLeaderboardNames(){
+        return leaderboard.getNames();
+    }
+    public static int[] getLeaderboardScores(){
+        return leaderboard.getScores();
+    }
 
 }
