@@ -79,7 +79,7 @@ public class InitialConfiguration extends AppCompatActivity {
                 gameMedium.putExtras(extras);
                 startActivity(gameMedium);
             } else if (difficulty == 3) {
-                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneEasy.class);
+                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
                 gameHard.putExtras(extras);
                 startActivity(gameHard);
             }

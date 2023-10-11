@@ -25,6 +25,10 @@
             android:screenOrientation="landscape"
             android:exported="false" />
         <activity
+            android:name=".views.GameSceneHard"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
             android:name=".views.InitialConfiguration"
             android:screenOrientation="landscape"
             android:exported="false" />
