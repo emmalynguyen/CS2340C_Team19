@@ -49,6 +49,18 @@ public class OverarchingViewmodel {
         Leaderboard.getLeaderboard().addScore(username, score.getCount());
         score.resetCount();
     }
+    public static void setPlayerDifficulty(int difficulty) {
+        player.setDifficulty(difficulty);
+    }
+    public static int getPlayerDifficulty(){
+        return player.getDifficulty();
+    }
+    public static void setPlayerDifficultyName(String difficultyName) {
+        player.setDifficultyName(difficultyName);
+    }
+    public static String getPlayerDifficultyName(){
+        return player.getDifficultyName();
+    }
 
 
 
