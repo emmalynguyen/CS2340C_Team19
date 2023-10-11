@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class InitialConfiguration extends AppCompatActivity {
     @Override
@@ -21,8 +22,6 @@ public class InitialConfiguration extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        Player player = Player.getPlayer();
-
         Button nextButton = findViewById(R.id.nextButton);
 
         nextButton.setOnClickListener(v -> {
@@ -30,7 +29,6 @@ public class InitialConfiguration extends AppCompatActivity {
             int difficulty;
             String difficultyLevel;
             int health;
-            int sprite;
 
             if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
                 difficultyLevel ="Hard";
@@ -50,11 +48,11 @@ public class InitialConfiguration extends AppCompatActivity {
 
             RadioGroup spriteRadioGroup = findViewById(R.id.radioGroupCharacter);
             if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioEldric) {
-                player.setDrawable(R.drawable.male_elf);
+                OverarchingViewmodel.setPlayerSprite(R.drawable.male_elf);
             } else if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioVaris) {
-                player.setDrawable(R.drawable.female_wizard);
+                OverarchingViewmodel.setPlayerSprite(R.drawable.female_wizard);
             } else if (spriteRadioGroup.getCheckedRadioButtonId() == R.id.radioLyria) {
-                player.setDrawable(R.drawable.female_dwarf);
+                OverarchingViewmodel.setPlayerSprite(R.drawable.female_dwarf);
             } else {
                 return;
             }
@@ -67,14 +65,11 @@ public class InitialConfiguration extends AppCompatActivity {
             username = inputBox.getText().toString();
 
             Bundle extras = new Bundle();
-//            extras.putString("name", username);
             extras.putInt("difficulty", difficulty);
-//            extras.putInt("sprite", sprite);
-//            extras.putInt("health", health);
             extras.putString("DifficultyLevel", difficultyLevel);
 
-            player.setHealth(health);
-            player.setName(username);
+            OverarchingViewmodel.setPlayerHealth(health);
+            OverarchingViewmodel.setPlayerName(username);
 
             Intent game = new Intent(InitialConfiguration.this, GameScene.class);
             game.putExtras(extras);

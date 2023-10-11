@@ -9,7 +9,7 @@
     tools:context=".views.Ending">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -27,7 +27,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/scoreText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -38,9 +38,9 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/score"/>
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/scoreText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -51,9 +51,9 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+        app:layout_constraintTop_toBottomOf="@+id/scoreText2"/>
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/scoreText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -64,9 +64,9 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+        app:layout_constraintTop_toBottomOf="@+id/scoreText3"/>
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/scoreText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -77,9 +77,9 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+        app:layout_constraintTop_toBottomOf="@+id/scoreText4"/>
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/scoreText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -90,7 +90,19 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+        app:layout_constraintTop_toBottomOf="@+id/scoreText5"/>
+
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:text="Restart"
+        android:textColor="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreText6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

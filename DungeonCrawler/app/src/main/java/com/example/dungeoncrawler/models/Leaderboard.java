@@ -1,5 +1,7 @@
 package com.example.dungeoncrawler.models;
 
+import android.util.Log;
+
 public class Leaderboard {
 
     //singleton instance
@@ -9,8 +11,9 @@ public class Leaderboard {
 
     //private constructor
     private Leaderboard() {
-        scores = new int[5];
-        names = new String[5];
+        scores = new int[6];
+        scores[0] = Integer.MAX_VALUE;
+        names = new String[6];
     }
 
     //get instance
@@ -22,16 +25,23 @@ public class Leaderboard {
     }
 
     public void addScore(String name, int score){
-        for(int i = 4; i >= 0; i--) {
+        for(int i = 5; i >= 0; i--) {
             if (score < scores[i]) {
-                for (int j = 4; j > i + 1; i--) {
-                    scores[i] = scores[i - 1];
-                    names[i] = names[i - 1];
+                for (int j = 5; j > i + 1; j--) {
+                    scores[j] = scores[j - 1];
+                    names[j] = names[j - 1];
                 }
-                scores[i + 1] = score;
-                names[i + 1] = name;
+                if(i < 5) {
+                    scores[i + 1] = score;
+                    names[i + 1] = name;
+                }
+                return;
             }
         }
+    }
+
+    public void clear(){
+        leaderboard = new Leaderboard();
     }
 
     public int[] getScores() {
