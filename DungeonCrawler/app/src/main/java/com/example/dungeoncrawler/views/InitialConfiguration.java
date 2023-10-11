@@ -63,24 +63,19 @@ public class InitialConfiguration extends AppCompatActivity {
             }
             username = inputBox.getText().toString();
 
-            Bundle extras = new Bundle();
-            extras.putInt("difficulty", difficulty);
-            extras.putString("DifficultyLevel", difficultyLevel);
-
+            OverarchingViewmodel.setPlayerDifficulty(difficulty);
+            OverarchingViewmodel.setPlayerDifficultyName(difficultyLevel);
             OverarchingViewmodel.setPlayerHealth(health);
             OverarchingViewmodel.setPlayerName(username);
 
             if (difficulty == 1) {
                 Intent gameEasy = new Intent(InitialConfiguration.this, GameSceneEasy.class);
-                gameEasy.putExtras(extras);
                 startActivity(gameEasy);
             } else if (difficulty == 2) {
                 Intent gameMedium = new Intent(InitialConfiguration.this, GameSceneMedium.class);
-                gameMedium.putExtras(extras);
                 startActivity(gameMedium);
             } else if (difficulty == 3) {
                 Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
-                gameHard.putExtras(extras);
                 startActivity(gameHard);
             }
             finish();

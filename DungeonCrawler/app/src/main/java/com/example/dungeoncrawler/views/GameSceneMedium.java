@@ -26,9 +26,9 @@ public class GameSceneMedium extends AppCompatActivity {
         Bundle extras = intent.getExtras();
 
         String username = OverarchingViewmodel.getPlayerName();
-        int difficulty = extras.getInt("difficulty");
+        int difficulty = OverarchingViewmodel.getPlayerDifficulty();
         int health = OverarchingViewmodel.getPlayerHealth();
-        String difficultyLevel = extras.getString("DifficultyLevel");
+        String difficultyLevel = OverarchingViewmodel.getPlayerDifficultyName();
 
         TextView nameTextView = findViewById(R.id.nameText);
         nameTextView.setText("Hi " + username);
