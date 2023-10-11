@@ -60,7 +60,7 @@ public class GameSceneMedium extends AppCompatActivity {
             }
 
             @Override
-            public void onFinish() {}
+            public void onFinish() { }
 
         }.start();
     }
