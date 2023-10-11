@@ -42,12 +42,25 @@ public class GameSceneHard extends AppCompatActivity {
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
-        Button endingButton = findViewById(R.id.endingButton);
-
-        endingButton.setOnClickListener(v -> {
+        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+        leaderboardButton.setOnClickListener(v -> {
             OverarchingViewmodel.addScore(username);
-            Intent ending = new Intent(GameSceneHard.this, Ending.class);
-            startActivity(ending);
+            Intent leaderboard = new Intent(GameSceneHard.this, Ending.class);
+            startActivity(leaderboard);
+            finish();
+        });
+
+        Button mediumButton = findViewById(R.id.mediumButton);
+        mediumButton.setOnClickListener(v -> {
+            Intent mediumGame = new Intent(GameSceneHard.this, GameSceneMedium.class);
+            startActivity(mediumGame);
+            finish();
+        });
+
+        Button easyButton = findViewById(R.id.easyButton);
+        easyButton.setOnClickListener(v -> {
+            Intent easyGame = new Intent(GameSceneHard.this, GameSceneEasy.class);
+            startActivity(easyGame);
             finish();
         });
 

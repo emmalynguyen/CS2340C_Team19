@@ -42,11 +42,10 @@ public class GameSceneEasy extends AppCompatActivity {
         healthTextView.setText("You have " + health + " health");
 
         Button leaderboardButton = findViewById(R.id.leaderboardButton);
-
         leaderboardButton.setOnClickListener(v -> {
             OverarchingViewmodel.addScore(username);
-            Intent ending = new Intent(GameSceneEasy.this, Ending.class);
-            startActivity(ending);
+            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
+            startActivity(leaderboard);
             finish();
         });
 
