@@ -14,6 +14,7 @@ import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.models.Score;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class GameScene extends AppCompatActivity {
     @Override
@@ -24,22 +25,20 @@ public class GameScene extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        Player player = Player.getPlayer();
-        Score score = Score.getScore();
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        String username = player.getName();
+        String username = OverarchingViewmodel.getPlayerName();
         int difficulty = extras.getInt("difficulty");
-        int health = player.getHealth();
+        int health = OverarchingViewmodel.getPlayerHealth();
         String difficultyLevel = extras.getString("DifficultyLevel");
 
         TextView nameTextView = findViewById(R.id.nameText);
         nameTextView.setText("Hi " + username);
 
         ImageView spriteView = findViewById(R.id.spriteView);
-        spriteView.setImageResource(player.getDrawable());
+        spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
 //        if(sprite == 1) {
 //            spriteView.setImageResource(R.drawable.male_elf);
 //        } else if(sprite == 2) {
@@ -57,8 +56,7 @@ public class GameScene extends AppCompatActivity {
         Button endingButton = findViewById(R.id.endingButton);
 
         endingButton.setOnClickListener(v -> {
-            Leaderboard.getLeaderboard().addScore(username, score.getCount());
-            score.resetCount();
+            OverarchingViewmodel.addScore(username);
             Intent ending = new Intent(GameScene.this, Ending.class);
             startActivity(ending);
             finish();
@@ -69,7 +67,7 @@ public class GameScene extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                scoreText.setText("Score: " + score.decrement(1));
+                scoreText.setText("Score: " + OverarchingViewmodel.decreaseScore(1));
             }
 
             @Override
