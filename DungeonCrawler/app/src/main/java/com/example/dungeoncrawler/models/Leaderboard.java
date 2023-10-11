@@ -31,11 +31,17 @@ public class Leaderboard {
                     scores[j] = scores[j - 1];
                     names[j] = names[j - 1];
                 }
-                scores[i + 1] = score;
-                names[i + 1] = name;
+                if(i < 5) {
+                    scores[i + 1] = score;
+                    names[i + 1] = name;
+                }
                 return;
             }
         }
+    }
+
+    public void clear(){
+        leaderboard = new Leaderboard();
     }
 
     public int[] getScores() {
