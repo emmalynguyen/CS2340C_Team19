@@ -20,11 +20,10 @@ public class OverarchingViewmodel {
     }
 
     public static int decreaseScore(int decrease){
-        score.decrement(decrease);
         if(score.getCount() <= 0) {
-            score.setCount(0);
+            decrease = 0;
         }
-        return score.getCount();
+        return score.decrement(decrease);
     }
 
     public static void setPlayerSprite(int sprite) {
@@ -50,11 +49,17 @@ public class OverarchingViewmodel {
         Leaderboard.getLeaderboard().addScore(username, score.getCount());
         score.resetCount();
     }
-    public static String[] getLeaderboardNames(){
-        return leaderboard.getNames();
+    public static void setPlayerDifficulty(int difficulty) {
+        player.setDifficulty(difficulty);
     }
-    public static int[] getLeaderboardScores(){
-        return leaderboard.getScores();
+    public static int getPlayerDifficulty(){
+        return player.getDifficulty();
+    }
+    public static void setPlayerDifficultyName(String difficultyName) {
+        player.setDifficultyName(difficultyName);
+    }
+    public static String getPlayerDifficultyName(){
+        return player.getDifficultyName();
     }
 
 
