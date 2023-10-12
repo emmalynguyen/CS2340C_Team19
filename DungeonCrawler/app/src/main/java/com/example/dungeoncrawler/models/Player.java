@@ -9,6 +9,9 @@ public class Player {
     private int health;
     private String name;
 
+    private String difficultyName;
+    private int difficulty;
+
     private int sprite;
 
     private Player() {
@@ -46,5 +49,21 @@ public class Player {
 
     public void setDrawable(int sprite) {
         this.sprite = sprite;
+    }
+
+    public String getDifficultyName() {
+        return difficultyName;
+    }
+
+    public void setDifficultyName(String difficultyName) {
+        this.difficultyName = difficultyName;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 }
