@@ -66,4 +66,13 @@ public class Player {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+
+    public int getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(int sprite) {
+        this.sprite = sprite;
+    }
+
 }
