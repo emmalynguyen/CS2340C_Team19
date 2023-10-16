@@ -5,7 +5,7 @@ public class Score {
     private int count;
 
     private Score() {
-        count = 100;
+        this.count = 100;
     }
 
     public static Score getScore(){
@@ -29,6 +29,6 @@ public class Score {
     }
 
     public void resetCount(){
-        score = new Score();
+        setCount(100);
     }
 }

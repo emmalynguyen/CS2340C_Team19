@@ -42,6 +42,10 @@ public class Leaderboard {
 
     public void clear(){
         leaderboard = new Leaderboard();
+        for(int i = 1; i < 6; i++) {
+            scores[i] = 0;
+            names[i] = null;
+        }
     }
 
     public int[] getScores() {

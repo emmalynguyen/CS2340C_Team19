@@ -78,6 +78,7 @@ public class InitialConfiguration extends AppCompatActivity {
                 Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
                 startActivity(gameHard);
             }
+            OverarchingViewmodel.resetScore();
             finish();
         });
     }

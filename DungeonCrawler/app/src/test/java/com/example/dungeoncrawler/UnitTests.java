@@ -47,7 +47,7 @@ public class UnitTests {
         assertArrayEquals(testArray, scores);
     }
 
-    @Test
+    @Test // Tanavi Test
     public void ScoreMinimum(){
         Score score = Score.getScore();
         new OverarchingViewmodel();
@@ -56,6 +56,22 @@ public class UnitTests {
 
         OverarchingViewmodel.decreaseScore(150);
         assertEquals(0, score.getCount());
+    }
+
+    @Test // Tanavi Test
+    public void ScoreReset(){
+        Score score = Score.getScore();
+        OverarchingViewmodel.addScore("hi");
+        score = Score.getScore();
+        //new OverarchingViewmodel();
+
+        assertEquals(100, score.getCount());
+
+        OverarchingViewmodel.decreaseScore(10);
+        assertEquals(90, score.getCount());
+
+        OverarchingViewmodel.addScore("testScore");
+        assertEquals(100, score.getCount());
     }
 
 }
