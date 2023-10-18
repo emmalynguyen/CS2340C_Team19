@@ -6,6 +6,9 @@ import android.text.style.LeadingMarginSpan;
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.models.Score;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class OverarchingViewmodel {
 
@@ -47,7 +50,11 @@ public class OverarchingViewmodel {
     }
 
     public static void addScore(String username){
-        Leaderboard.getLeaderboard().addScore(username, score.getCount());
+        //Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(calendar.getTime());
+        Leaderboard.getLeaderboard().addScore(username, score.getCount(), formattedDate);
         score.resetCount();
     }
     public static void resetScore() {
@@ -71,6 +78,9 @@ public class OverarchingViewmodel {
     }
     public static int[] getLeaderboardScores(){
         return leaderboard.getScores();
+    }
+    public static String[] getLeaderboardDates() {
+        return leaderboard.getDates();
     }
 
 }

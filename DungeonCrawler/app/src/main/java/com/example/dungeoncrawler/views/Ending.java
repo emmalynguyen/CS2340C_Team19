@@ -27,6 +27,9 @@ public class Ending extends AppCompatActivity {
         String[] names = OverarchingViewmodel.getLeaderboardNames();
         int[] scores = OverarchingViewmodel.getLeaderboardScores();
 
+        String[] dates = OverarchingViewmodel.getLeaderboardDates();
+
+        //throw an error, this is where I need to add the current score to end screen
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
         scoreText2.setText(names[1] + "\n" + scores[1]);
@@ -38,6 +41,17 @@ public class Ending extends AppCompatActivity {
         scoreText5.setText(names[4] + "\n" + scores[4]);
         TextView scoreText6 = findViewById(R.id.scoreText6);
         scoreText6.setText(names[5] + "\n" + scores[5]);
+
+        TextView dateText2 = findViewById(R.id.dateText2);
+        dateText2.setText(dates[1]);
+        TextView dateText3 = findViewById(R.id.dateText3);
+        dateText3.setText(dates[2]);
+        TextView dateText4 = findViewById(R.id.dateText4);
+        dateText4.setText(dates[3]);
+        TextView dateText5 = findViewById(R.id.dateText5);
+        dateText5.setText(dates[4]);
+        TextView dateText6 = findViewById(R.id.dateText6);
+        dateText6.setText(dates[5]);
 
 
         Button restartButton = findViewById(R.id.restartButton);
