@@ -41,30 +41,8 @@ public class GameSceneEasy extends AppCompatActivity {
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
-        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-        leaderboardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.addScore(username);
-            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
-            startActivity(leaderboard);
-            finish();
-        });
-
-        Button mediumButton = findViewById(R.id.mediumButton);
-        mediumButton.setOnClickListener(v -> {
-            Intent mediumGame = new Intent(GameSceneEasy.this, GameSceneMedium.class);
-            startActivity(mediumGame);
-            finish();
-        });
-
-        Button hardButton = findViewById(R.id.hardButton);
-        hardButton.setOnClickListener(v -> {
-            Intent hardGame = new Intent(GameSceneEasy.this, GameSceneHard.class);
-            startActivity(hardGame);
-            finish();
-        });
-
         TextView scoreText = findViewById(R.id.scoreText);
-        new CountDownTimer(100000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(100000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -75,5 +53,34 @@ public class GameSceneEasy extends AppCompatActivity {
             public void onFinish() {}
 
         }.start();
+
+
+        Button mediumButton = findViewById(R.id.mediumButton);
+        mediumButton.setOnClickListener(v -> {
+            countDownTimer.cancel();
+            Intent mediumGame = new Intent(GameSceneEasy.this, GameSceneMedium.class);
+            startActivity(mediumGame);
+            finish();
+        });
+
+        Button hardButton = findViewById(R.id.hardButton);
+        hardButton.setOnClickListener(v -> {
+            countDownTimer.cancel();
+            Intent hardGame = new Intent(GameSceneEasy.this, GameSceneHard.class);
+            startActivity(hardGame);
+            finish();
+        });
+
+
+
+        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+        leaderboardButton.setOnClickListener(v -> {
+            countDownTimer.cancel();
+            OverarchingViewmodel.addScore(username);
+            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
+            startActivity(leaderboard);
+            finish();
+        });
+
     }
 }
