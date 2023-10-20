@@ -13,11 +13,15 @@ public class Player {
     private int difficulty;
 
     private int sprite;
+    private int x; // X-coordinate of the player's position
+    private int y; // Y-coordinate of the player's position
 
     private Player() {
         health = 100;
         name = null;
         sprite = 0;
+        x = 0; // Initial X-coordinate
+        y = 0; // Initial Y-coordinate
     }
 
     public static Player getPlayer() {
@@ -65,5 +69,28 @@ public class Player {
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void moveLeft(int step) {
+        x -= step;
+    }
+
+    public void moveRight(int step) {
+        x += step;
+    }
+
+    public void moveUp(int step) {
+        y -= step;
+    }
+
+    public void moveDown(int step) {
+        y += step;
     }
 }

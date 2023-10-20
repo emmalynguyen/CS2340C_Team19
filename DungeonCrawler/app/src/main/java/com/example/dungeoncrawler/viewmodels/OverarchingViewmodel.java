@@ -26,6 +26,7 @@ public class OverarchingViewmodel {
         return score.decrement(decrease);
     }
 
+
     public static void setPlayerSprite(int sprite) {
         player.setDrawable(sprite);
     }
