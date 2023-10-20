@@ -1,6 +1,8 @@
 package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class GameSceneEasy extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,44 +45,26 @@ public class GameSceneEasy extends AppCompatActivity {
         healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
-        CountDownTimer countDownTimer = new CountDownTimer(100000, 1000) {
 
-            @Override
-            public void onTick(long millisUntilFinished) {
-                scoreText.setText("Score: " + OverarchingViewmodel.decreaseScore(1));
-            }
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value));
 
-            @Override
-            public void onFinish() {}
 
-        }.start();
+
 
 
         Button mediumButton = findViewById(R.id.mediumButton);
         mediumButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            Intent mediumGame = new Intent(GameSceneEasy.this, GameSceneMedium.class);
-            startActivity(mediumGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
         });
 
         Button hardButton = findViewById(R.id.hardButton);
         hardButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            Intent hardGame = new Intent(GameSceneEasy.this, GameSceneHard.class);
-            startActivity(hardGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
         });
-
-
 
         Button leaderboardButton = findViewById(R.id.leaderboardButton);
         leaderboardButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            OverarchingViewmodel.addScore(username);
-            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
-            startActivity(leaderboard);
-            finish();
+            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
         });
 
     }

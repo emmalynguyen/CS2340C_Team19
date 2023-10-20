@@ -13,6 +13,8 @@ import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Score;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
+import org.w3c.dom.Text;
+
 public class Ending extends AppCompatActivity {
 
     @Override
@@ -29,7 +31,10 @@ public class Ending extends AppCompatActivity {
 
         String[] dates = OverarchingViewmodel.getLeaderboardDates();
 
-        //throw an error, this is where I need to add the current score to end screen
+        TextView currentScoreText = findViewById(R.id.currentScore);
+        currentScoreText.setText(OverarchingViewmodel.getPlayerName() + "\n" + OverarchingViewmodel.getScore().getValue());
+        TextView currentScoreDate = findViewById(R.id.currentDate);
+        currentScoreDate.setText(OverarchingViewmodel.getDate());
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
         scoreText2.setText(names[1] + "\n" + scores[1]);
@@ -56,9 +61,7 @@ public class Ending extends AppCompatActivity {
 
         Button restartButton = findViewById(R.id.restartButton);
         restartButton.setOnClickListener(v -> {
-            Intent configuration = new Intent(Ending.this, InitialConfiguration.class);
-            startActivity(configuration);
-            finish();
+            OverarchingViewmodel.sceneToConfig(Ending.this, InitialConfiguration.class);
         });
     }
 }

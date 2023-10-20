@@ -44,43 +44,23 @@ public class GameSceneHard extends AppCompatActivity {
 
 
         TextView scoreText = findViewById(R.id.scoreText);
-        CountDownTimer countDownTimer = new CountDownTimer(100000, 1000) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                scoreText.setText("Score: " + OverarchingViewmodel.decreaseScore(1));
-            }
-
-            @Override
-            public void onFinish() {}
-
-        }.start();
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value));
 
 
         Button easyButton = findViewById(R.id.easyButton);
         easyButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            Intent easyGame = new Intent(GameSceneHard.this, GameSceneEasy.class);
-            startActivity(easyGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneHard.this, GameSceneEasy.class);
         });
 
         Button mediumButton = findViewById(R.id.mediumButton);
         mediumButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            Intent mediumGame = new Intent(GameSceneHard.this, GameSceneMedium.class);
-            startActivity(mediumGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneHard.this, GameSceneMedium.class);
         });
 
 
         Button leaderboardButton = findViewById(R.id.leaderboardButton);
         leaderboardButton.setOnClickListener(v -> {
-            countDownTimer.cancel();
-            OverarchingViewmodel.addScore(username);
-            Intent leaderboard = new Intent(GameSceneHard.this, Ending.class);
-            startActivity(leaderboard);
-            finish();
+            OverarchingViewmodel.sceneToLeaderboard(GameSceneHard.this, Ending.class);
         });
 
     }
