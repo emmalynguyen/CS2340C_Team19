@@ -42,39 +42,24 @@ public class GameSceneMedium extends AppCompatActivity {
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
-        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-        leaderboardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.addScore(username);
-            Intent leaderboard = new Intent(GameSceneMedium.this, Ending.class);
-            startActivity(leaderboard);
-            finish();
-        });
+        TextView scoreText = findViewById(R.id.scoreText);
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value));
+
 
         Button easyButton = findViewById(R.id.easyButton);
         easyButton.setOnClickListener(v -> {
-            Intent easyGame = new Intent(GameSceneMedium.this, GameSceneEasy.class);
-            startActivity(easyGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneMedium.this, GameSceneEasy.class);
         });
 
         Button hardButton = findViewById(R.id.hardButton);
         hardButton.setOnClickListener(v -> {
-            Intent hardGame = new Intent(GameSceneMedium.this, GameSceneHard.class);
-            startActivity(hardGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneMedium.this, GameSceneHard.class);
         });
 
-        TextView scoreText = findViewById(R.id.scoreText);
-        new CountDownTimer(100000, 1000) {
 
-            @Override
-            public void onTick(long millisUntilFinished) {
-                scoreText.setText("Score: " + OverarchingViewmodel.decreaseScore(1));
-            }
-
-            @Override
-            public void onFinish() { }
-
-        }.start();
+        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+        leaderboardButton.setOnClickListener(v -> {
+            OverarchingViewmodel.sceneToLeaderboard(GameSceneMedium.this, Ending.class);
+        });
     }
 }

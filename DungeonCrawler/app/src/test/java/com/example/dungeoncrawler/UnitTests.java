@@ -18,8 +18,8 @@ public class UnitTests {
 
         assertArrayEquals(testArray, scores);
 
-        leaderboard.addScore("highest", 999);
-        leaderboard.addScore("bottom", -1);
+        leaderboard.addScore("highest", 999, null);
+        leaderboard.addScore("bottom", -1, null);
         testArray[1] = 999;
 
         assertArrayEquals(testArray, scores);
@@ -33,12 +33,12 @@ public class UnitTests {
         int[] testArray = new int[6];
         testArray[0] = Integer.MAX_VALUE;
 
-        leaderboard.addScore("3", 3);
-        leaderboard.addScore("6", 6);
-        leaderboard.addScore("5", 5);
-        leaderboard.addScore("2", 2);
-        leaderboard.addScore("1", 1);
-        leaderboard.addScore("4", 4);
+        leaderboard.addScore("3", 3, null);
+        leaderboard.addScore("6", 6, null);
+        leaderboard.addScore("5", 5, null);
+        leaderboard.addScore("2", 2, null);
+        leaderboard.addScore("1", 1, null);
+        leaderboard.addScore("4", 4, null);
 
         for(int i = 1; i <= 5; i++) {
             testArray[i] = 7-i;
@@ -47,7 +47,7 @@ public class UnitTests {
         assertArrayEquals(testArray, scores);
     }
 
-    @Test
+    @Test // Tanavi Test
     public void ScoreMinimum(){
         Score score = Score.getScore();
         new OverarchingViewmodel();
@@ -56,6 +56,22 @@ public class UnitTests {
 
         OverarchingViewmodel.decreaseScore(150);
         assertEquals(0, score.getCount());
+    }
+
+    @Test // Tanavi Test
+    public void ScoreReset(){
+        Score score = Score.getScore();
+        OverarchingViewmodel.addScore("hi");
+        score = Score.getScore();
+        //new OverarchingViewmodel();
+
+        assertEquals(100, score.getCount());
+
+        OverarchingViewmodel.decreaseScore(10);
+        assertEquals(90, score.getCount());
+
+        OverarchingViewmodel.addScore("testScore");
+        assertEquals(100, score.getCount());
     }
 
 }
