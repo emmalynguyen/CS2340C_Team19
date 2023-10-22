@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.dungeoncrawler.views.Ending;
+
 public class GameScene extends AppCompatActivity {
 
     @Override
