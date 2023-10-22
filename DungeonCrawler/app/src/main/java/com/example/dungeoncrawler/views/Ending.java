@@ -32,7 +32,7 @@ public class Ending extends AppCompatActivity {
         String[] dates = OverarchingViewmodel.getLeaderboardDates();
 
         TextView currentScoreText = findViewById(R.id.currentScore);
-        currentScoreText.setText(OverarchingViewmodel.getPlayerName() + "\n" + OverarchingViewmodel.getScore().getValue());
+        currentScoreText.setText("Congrats " + OverarchingViewmodel.getPlayerName() + "!\n" + OverarchingViewmodel.getScore().getValue());
         TextView currentScoreDate = findViewById(R.id.currentDate);
         currentScoreDate.setText(OverarchingViewmodel.getDate());
 
