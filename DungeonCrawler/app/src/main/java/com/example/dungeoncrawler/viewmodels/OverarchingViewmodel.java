@@ -5,28 +5,25 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
-import android.text.style.LeadingMarginSpan;
+import android.view.KeyEvent;
+import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.models.Score;
-import com.example.dungeoncrawler.views.GameSceneEasy;
-import com.example.dungeoncrawler.views.GameSceneHard;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class OverarchingViewmodel {
 
     private static Leaderboard leaderboard;
     private static Score score;
     private static Player player;
+    private static Movement movement;
 
 
 
@@ -85,6 +82,9 @@ public class OverarchingViewmodel {
                 startTimer();
             }
         }.start();
+    }
+    public static boolean inBoundEasy() {
+        return false;
     }
     public static void stopTimer(){
         timer.cancel();
@@ -147,5 +147,49 @@ public class OverarchingViewmodel {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(calendar.getTime());
+    }
+
+    public static void moveRight() {
+        player.setX(player.getX()+1);
+    }
+
+    private static void setMovementStrategy(Movement newMovement) {
+        movement = newMovement;
+    }
+    private static void move(){
+        movement.move();
+    }
+    public static void keyDown(int keyCode) {
+        Movement movement = null;
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                MoveLeft moveLeft = new MoveLeft();
+                OverarchingViewmodel.setMovementStrategy(moveLeft);
+                OverarchingViewmodel.move();
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                MoveRight moveRight = new MoveRight();
+                OverarchingViewmodel.setMovementStrategy(moveRight);
+                OverarchingViewmodel.move();
+                break;
+        }
+    }
+
+    public static void setObserver(Observer observer) {
+        player.registerObserver(observer);
+    }
+    public static void removeObserver(Observer observer) {
+        player.removeObserver(observer);
+    }
+
+    public static int getPlayerX() {
+        return player.getX();
+    }
+    public static int getPlayerY() {
+        return player.getY();
     }
 }

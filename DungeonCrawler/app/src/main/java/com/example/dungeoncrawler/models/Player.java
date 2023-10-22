@@ -1,23 +1,36 @@
 package com.example.dungeoncrawler.models;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
-public class Player {
+import com.example.dungeoncrawler.viewmodels.Observer;
+import com.example.dungeoncrawler.viewmodels.Subject;
+
+import java.util.ArrayList;
+
+public class Player implements Subject {
 
     private static Player player;
     private int health;
     private String name;
 
+    private int x;
+    private int y;
+
     private String difficultyName;
     private int difficulty;
 
     private int sprite;
+    private ArrayList<Observer> observers;
 
     private Player() {
         health = 100;
         name = null;
         sprite = 0;
+        x = 0;
+        y = 0;
+        observers = new ArrayList<>();
     }
 
     public static Player getPlayer() {
@@ -75,4 +88,38 @@ public class Player {
         this.sprite = sprite;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+        notifyObservers();
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+        notifyObservers();
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
 }
