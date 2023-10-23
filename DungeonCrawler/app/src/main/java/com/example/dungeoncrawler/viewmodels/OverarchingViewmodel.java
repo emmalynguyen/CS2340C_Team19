@@ -5,28 +5,25 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
-import android.text.style.LeadingMarginSpan;
+import android.view.KeyEvent;
+import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.models.Score;
-import com.example.dungeoncrawler.views.GameSceneEasy;
-import com.example.dungeoncrawler.views.GameSceneHard;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class OverarchingViewmodel {
 
     private static Leaderboard leaderboard;
     private static Score score;
     private static Player player;
+    private static Movement movement;
 
 
 
@@ -54,9 +51,13 @@ public class OverarchingViewmodel {
 
     public static void sceneChangeRoom(Context context, Class destination){
         sceneChange(context, destination);
+        player.setX(1050);
+        player.setY(100);
     }
     public static void sceneToRoom(Context context, Class destination){
         sceneChange(context, destination);
+        player.setX(1050);
+        player.setY(100);
         startTimer();
     }
     public static void sceneToLeaderboard(Context context, Class destination){
@@ -78,6 +79,7 @@ public class OverarchingViewmodel {
             @Override
             public void onTick(long l) {
                 decreaseScore(1);
+                player.notifyObservers();
             }
 
             @Override
@@ -85,6 +87,9 @@ public class OverarchingViewmodel {
                 startTimer();
             }
         }.start();
+    }
+    public static boolean inBoundEasy() {
+        return false;
     }
     public static void stopTimer(){
         timer.cancel();
@@ -148,5 +153,59 @@ public class OverarchingViewmodel {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(calendar.getTime());
+    }
+
+    private static void setMovementStrategy(Movement newMovement) {
+        movement = newMovement;
+    }
+    private static void move(int step){
+        movement.move(step);
+    }
+    public static void keyDown(int keyCode) {
+        Movement movement = null;
+        int step = 10;
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+                MoveUp moveUp = new MoveUp();
+                OverarchingViewmodel.setMovementStrategy(moveUp);
+                move(step);
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                MoveDown moveDown = new MoveDown();
+                OverarchingViewmodel.setMovementStrategy(moveDown);
+                move(step);
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                MoveLeft moveLeft = new MoveLeft();
+                OverarchingViewmodel.setMovementStrategy(moveLeft);
+                move(step);
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                MoveRight moveRight = new MoveRight();
+                OverarchingViewmodel.setMovementStrategy(moveRight);
+                move(step);
+                break;
+        }
+    }
+
+    public static void setObserver(Observer observer) {
+        player.registerObserver(observer);
+    }
+    public static void removeObserver(Observer observer) {
+        player.removeObserver(observer);
+    }
+
+    public static int getPlayerX() {
+        return player.getX();
+    }
+    public static int getPlayerY() {
+        return player.getY();
+    }
+
+    public static void setPlayerX(int x) {
+         player.setX(x);
+    }
+    public static void setPlayerY(int y) {
+         player.setY(y);
     }
 }
