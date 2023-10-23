@@ -4,5 +4,6 @@ import android.media.Image;
 import android.widget.ImageView;
 
 public interface Movement {
-    void move();
+    void move(int step);
+    boolean canMove();
 }

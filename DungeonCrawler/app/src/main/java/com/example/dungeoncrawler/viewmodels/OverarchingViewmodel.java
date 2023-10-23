@@ -51,9 +51,13 @@ public class OverarchingViewmodel {
 
     public static void sceneChangeRoom(Context context, Class destination){
         sceneChange(context, destination);
+        player.setX(1050);
+        player.setY(100);
     }
     public static void sceneToRoom(Context context, Class destination){
         sceneChange(context, destination);
+        player.setX(1050);
+        player.setY(100);
         startTimer();
     }
     public static void sceneToLeaderboard(Context context, Class destination){
@@ -75,6 +79,7 @@ public class OverarchingViewmodel {
             @Override
             public void onTick(long l) {
                 decreaseScore(1);
+                player.notifyObservers();
             }
 
             @Override
@@ -149,32 +154,35 @@ public class OverarchingViewmodel {
         return dateFormat.format(calendar.getTime());
     }
 
-    public static void moveRight() {
-        player.setX(player.getX()+1);
-    }
-
     private static void setMovementStrategy(Movement newMovement) {
         movement = newMovement;
     }
-    private static void move(){
-        movement.move();
+    private static void move(int step){
+        movement.move(step);
     }
     public static void keyDown(int keyCode) {
         Movement movement = null;
+        int step = 10;
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
+                MoveUp moveUp = new MoveUp();
+                OverarchingViewmodel.setMovementStrategy(moveUp);
+                move(step);
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
+                MoveDown moveDown = new MoveDown();
+                OverarchingViewmodel.setMovementStrategy(moveDown);
+                move(step);
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 MoveLeft moveLeft = new MoveLeft();
                 OverarchingViewmodel.setMovementStrategy(moveLeft);
-                OverarchingViewmodel.move();
+                move(step);
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 MoveRight moveRight = new MoveRight();
                 OverarchingViewmodel.setMovementStrategy(moveRight);
-                OverarchingViewmodel.move();
+                move(step);
                 break;
         }
     }
@@ -191,5 +199,12 @@ public class OverarchingViewmodel {
     }
     public static int getPlayerY() {
         return player.getY();
+    }
+
+    public static void setPlayerX(int x) {
+         player.setX(x);
+    }
+    public static void setPlayerY(int y) {
+         player.setY(y);
     }
 }

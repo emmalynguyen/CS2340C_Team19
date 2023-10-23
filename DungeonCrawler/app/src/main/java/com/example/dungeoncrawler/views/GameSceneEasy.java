@@ -29,6 +29,9 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
+
+        ImageView spriteView = findViewById(R.id.spriteView);
+        spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
         OverarchingViewmodel.setObserver(this);
 
         String username = OverarchingViewmodel.getPlayerName();
@@ -39,33 +42,30 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         TextView nameTextView = findViewById(R.id.nameText);
         nameTextView.setText("Hi " + username);
 
-        ImageView spriteView = findViewById(R.id.spriteView);
-        spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
-
         TextView difficultyTextView = findViewById(R.id.difficultyText);
-        difficultyTextView.setText("Difficulty level " + difficulty + ": " + difficultyLevel);
+        difficultyTextView.setText("Difficulty level:"  + difficultyLevel);
 
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
-        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value));
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value + "\nRoom 1" ));
 
 
-        Button mediumButton = findViewById(R.id.mediumButton);
-        mediumButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
-        });
+//        Button mediumButton = findViewById(R.id.mediumButton);
+//        mediumButton.setOnClickListener(v -> {
+//            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
+//        });
 
-        Button hardButton = findViewById(R.id.hardButton);
-        hardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
-        });
+//        Button hardButton = findViewById(R.id.hardButton);
+//        hardButton.setOnClickListener(v -> {
+//            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
+//        });
 
-        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-        leaderboardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
-        });
+//        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+//        leaderboardButton.setOnClickListener(v -> {
+//            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
+//        });
 
     }
 
@@ -74,6 +74,10 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
+        if(OverarchingViewmodel.getPlayerY() >= 550) {
+            OverarchingViewmodel.removeObserver(this);
+            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
+        }
     }
 
     @Override

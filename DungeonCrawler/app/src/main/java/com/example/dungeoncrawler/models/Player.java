@@ -109,6 +109,7 @@ public class Player implements Subject {
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
+        notifyObservers();
     }
 
     @Override
