@@ -13,6 +13,8 @@ import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Score;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
+import org.w3c.dom.Text;
+
 public class Ending extends AppCompatActivity {
 
     @Override
@@ -27,6 +29,12 @@ public class Ending extends AppCompatActivity {
         String[] names = OverarchingViewmodel.getLeaderboardNames();
         int[] scores = OverarchingViewmodel.getLeaderboardScores();
 
+        String[] dates = OverarchingViewmodel.getLeaderboardDates();
+
+        TextView currentScoreText = findViewById(R.id.currentScore);
+        currentScoreText.setText(OverarchingViewmodel.getPlayerName() + "\n" + OverarchingViewmodel.getScore().getValue());
+        TextView currentScoreDate = findViewById(R.id.currentDate);
+        currentScoreDate.setText(OverarchingViewmodel.getDate());
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
         scoreText2.setText(names[1] + "\n" + scores[1]);
@@ -39,12 +47,21 @@ public class Ending extends AppCompatActivity {
         TextView scoreText6 = findViewById(R.id.scoreText6);
         scoreText6.setText(names[5] + "\n" + scores[5]);
 
+        TextView dateText2 = findViewById(R.id.dateText2);
+        dateText2.setText(dates[1]);
+        TextView dateText3 = findViewById(R.id.dateText3);
+        dateText3.setText(dates[2]);
+        TextView dateText4 = findViewById(R.id.dateText4);
+        dateText4.setText(dates[3]);
+        TextView dateText5 = findViewById(R.id.dateText5);
+        dateText5.setText(dates[4]);
+        TextView dateText6 = findViewById(R.id.dateText6);
+        dateText6.setText(dates[5]);
+
 
         Button restartButton = findViewById(R.id.restartButton);
         restartButton.setOnClickListener(v -> {
-            Intent configuration = new Intent(Ending.this, InitialConfiguration.class);
-            startActivity(configuration);
-            finish();
+            OverarchingViewmodel.sceneToConfig(Ending.this, InitialConfiguration.class);
         });
     }
 }

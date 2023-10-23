@@ -68,17 +68,17 @@ public class InitialConfiguration extends AppCompatActivity {
             OverarchingViewmodel.setPlayerHealth(health);
             OverarchingViewmodel.setPlayerName(username);
 
-            if (difficulty == 1) {
-                Intent gameEasy = new Intent(InitialConfiguration.this, GameSceneEasy.class);
-                startActivity(gameEasy);
-            } else if (difficulty == 2) {
-                Intent gameMedium = new Intent(InitialConfiguration.this, GameSceneMedium.class);
-                startActivity(gameMedium);
-            } else if (difficulty == 3) {
-                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
-                startActivity(gameHard);
-            }
-            finish();
+//            if (difficulty == 1) {
+//                OverarchingViewmodel.sceneToLeaderboard(InitialConfiguration.this, GameSceneEasy.class);
+//            } else if (difficulty == 2) {
+//                Intent gameMedium = new Intent(InitialConfiguration.this, GameSceneMedium.class);
+//                startActivity(gameMedium);
+//            } else if (difficulty == 3) {
+//                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
+//                startActivity(gameHard);
+//            }
+
+            OverarchingViewmodel.sceneToRoom(InitialConfiguration.this, GameSceneEasy.class);
         });
     }
 }

@@ -1,11 +1,14 @@
 package com.example.dungeoncrawler.models;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 public class Score {
     private static Score score;
-    private int count;
+    private static MutableLiveData<Integer> count = new MutableLiveData<>();
 
     private Score() {
-        count = 100;
+        this.count.setValue(100);
     }
 
     public static Score getScore(){
@@ -16,19 +19,23 @@ public class Score {
     }
 
     public int getCount(){
-        return count;
+        return count.getValue();
     }
 
     public void setCount(int count) {
-        this.count = count;
+        this.count.setValue(count);
     }
 
     public int decrement(int decrement) {
-        count -= decrement;
-        return count;
+        count.setValue(count.getValue()-decrement);
+        return count.getValue();
     }
 
     public void resetCount(){
-        score = new Score();
+        setCount(100);
+    }
+
+    public LiveData<Integer> getMutableLiveData() {
+        return count;
     }
 }

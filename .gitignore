@@ -30,3 +30,9 @@ DungeonCrawler/local.properties
 hs_err_pid*
 replay_pid*
 *.properties
+DungeonCrawler/.gradle/8.0/executionHistory/executionHistory.lock
+DungeonCrawler/.gradle/8.0/fileHashes/fileHashes.bin
+DungeonCrawler/.gradle/8.0/fileHashes/fileHashes.lock
+DungeonCrawler/.gradle/8.0/fileHashes/resourceHashesCache.bin
+DungeonCrawler/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+DungeonCrawler/.idea/workspace.xml

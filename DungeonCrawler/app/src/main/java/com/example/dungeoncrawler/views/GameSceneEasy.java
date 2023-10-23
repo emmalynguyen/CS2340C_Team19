@@ -1,6 +1,8 @@
 package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class GameSceneEasy extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,39 +46,28 @@ public class GameSceneEasy extends AppCompatActivity {
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
-        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-        leaderboardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.addScore(username);
-            Intent leaderboard = new Intent(GameSceneEasy.this, Ending.class);
-            startActivity(leaderboard);
-            finish();
-        });
+        TextView scoreText = findViewById(R.id.scoreText);
+
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value));
+
+
+
+
 
         Button mediumButton = findViewById(R.id.mediumButton);
         mediumButton.setOnClickListener(v -> {
-            Intent mediumGame = new Intent(GameSceneEasy.this, GameSceneMedium.class);
-            startActivity(mediumGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
         });
 
         Button hardButton = findViewById(R.id.hardButton);
         hardButton.setOnClickListener(v -> {
-            Intent hardGame = new Intent(GameSceneEasy.this, GameSceneHard.class);
-            startActivity(hardGame);
-            finish();
+            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
         });
 
-        TextView scoreText = findViewById(R.id.scoreText);
-        new CountDownTimer(100000, 1000) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                scoreText.setText("Score: " + OverarchingViewmodel.decreaseScore(1));
-            }
-
-            @Override
-            public void onFinish() {}
-
+        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+        leaderboardButton.setOnClickListener(v -> {
+            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
+        });
         }.start();
 
         View yourGameView = findViewById(R.layout.activity_game_easy); // Replace with your game view's ID
@@ -105,7 +97,5 @@ public class GameSceneEasy extends AppCompatActivity {
             }
             return super.onKeyDown(keyCode, event);
         }
-
-
     }
 }

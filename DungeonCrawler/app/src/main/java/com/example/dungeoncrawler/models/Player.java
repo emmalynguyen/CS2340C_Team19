@@ -93,4 +93,12 @@ public class Player {
     public void moveDown(int step) {
         y += step;
     }
+
+    public int getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(int sprite) {
+        this.sprite = sprite;
+    }
 }
