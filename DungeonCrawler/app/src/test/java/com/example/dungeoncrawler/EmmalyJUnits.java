@@ -18,4 +18,18 @@ public class EmmalyJUnits {
         newPlayer.setHealth(100);
         assertEquals(100, newPlayer.getHealth());
     }
+
+    @Test
+    public void checkDifficultyHard() {
+        Player newPlayer = Player.getPlayer();
+        newPlayer.setDifficulty(1);
+        assertEquals(3, newPlayer.getDifficulty());
+    }
+
+    @Test
+    public void checkHealthHard() {
+        Player newPlayer = Player.getPlayer();
+        newPlayer.setHealth(100);
+        assertEquals(50, newPlayer.getHealth());
+    }
 }
