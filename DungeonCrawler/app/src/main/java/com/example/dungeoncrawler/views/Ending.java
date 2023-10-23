@@ -34,7 +34,7 @@ public class Ending extends AppCompatActivity {
         TextView currentScoreText = findViewById(R.id.currentScore);
         currentScoreText.setText(OverarchingViewmodel.getPlayerName() + "\n" + OverarchingViewmodel.getScore().getValue());
         TextView currentScoreDate = findViewById(R.id.currentDate);
-        currentScoreDate.setText(OverarchingViewmodel.getDate());
+        currentScoreDate.setText("Congrats on winning!\n" + OverarchingViewmodel.getDate());
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
         scoreText2.setText(names[1] + "\n" + scores[1]);
