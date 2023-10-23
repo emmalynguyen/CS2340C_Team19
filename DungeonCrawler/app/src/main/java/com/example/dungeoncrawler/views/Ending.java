@@ -2,18 +2,14 @@ package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
-import com.example.dungeoncrawler.models.Leaderboard;
-import com.example.dungeoncrawler.models.Score;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
-import org.w3c.dom.Text;
 
 public class Ending extends AppCompatActivity {
 
@@ -32,7 +28,8 @@ public class Ending extends AppCompatActivity {
         String[] dates = OverarchingViewmodel.getLeaderboardDates();
 
         TextView currentScoreText = findViewById(R.id.currentScore);
-        currentScoreText.setText(OverarchingViewmodel.getPlayerName() + "\n" + OverarchingViewmodel.getScore().getValue());
+        currentScoreText.setText(OverarchingViewmodel.getPlayerName()
+                + "\n" + OverarchingViewmodel.getScore().getValue());
         TextView currentScoreDate = findViewById(R.id.currentDate);
         currentScoreDate.setText("Congrats on winning!\n" + OverarchingViewmodel.getDate());
 

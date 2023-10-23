@@ -4,20 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.KeyEvent;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 
 import com.example.dungeoncrawler.R;
-import com.example.dungeoncrawler.viewmodels.Movement;
-import com.example.dungeoncrawler.viewmodels.MoveLeft;
-import com.example.dungeoncrawler.viewmodels.MoveRight;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -46,38 +41,23 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         nameTextView.setText("Hi " + username);
 
         TextView difficultyTextView = findViewById(R.id.difficultyText);
-        difficultyTextView.setText("Difficulty level:"  + difficultyLevel);
+        difficultyTextView.setText("Difficulty level:" + difficultyLevel);
 
         TextView healthTextView = findViewById(R.id.healthText);
         healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
-        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value + "\nRoom 1" ));
-
-
-//        Button mediumButton = findViewById(R.id.mediumButton);
-//        mediumButton.setOnClickListener(v -> {
-//            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
-//        });
-
-//        Button hardButton = findViewById(R.id.hardButton);
-//        hardButton.setOnClickListener(v -> {
-//            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
-//        });
-
-//        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-//        leaderboardButton.setOnClickListener(v -> {
-//            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
-//        });
-
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: "
+                + value + "\nRoom 1"));
     }
+
 
     @Override
     public void update() {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
-        if(OverarchingViewmodel.getPlayerY() >= 550) {
+        if (OverarchingViewmodel.getPlayerY() >= 550) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
         }
@@ -87,6 +67,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         OverarchingViewmodel.keyDown(keyCode);
         return super.onKeyDown(keyCode, event);
+
 //        Movement movement = null;
 //        switch (keyCode) {
 //            case KeyEvent.KEYCODE_DPAD_UP:
@@ -145,6 +126,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
             }
             return super.onKeyDown(keyCode, event);
         }
+
     }
 
 }

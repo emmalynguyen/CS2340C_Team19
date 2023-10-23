@@ -4,17 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.KeyEvent;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
-import com.example.dungeoncrawler.viewmodels.Movement;
-import com.example.dungeoncrawler.viewmodels.MoveLeft;
-import com.example.dungeoncrawler.viewmodels.MoveRight;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -49,7 +44,8 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
-        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: " + value + "\nRoom 2" ));
+        OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: "
+                + value + "\nRoom 2"));
 
     }
 
@@ -58,7 +54,7 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
-        if(OverarchingViewmodel.getPlayerY() >= 500) {
+        if (OverarchingViewmodel.getPlayerY() >= 500) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneChangeRoom(GameSceneMedium.this, GameSceneHard.class);
         }
