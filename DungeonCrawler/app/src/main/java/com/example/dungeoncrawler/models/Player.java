@@ -1,8 +1,5 @@
 package com.example.dungeoncrawler.models;
 
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.Subject;

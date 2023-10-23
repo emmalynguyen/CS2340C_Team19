@@ -37,7 +37,7 @@ public class Welcome extends AppCompatActivity {
         });
     }
 
-    public void switchScene(Context from, Class to){
+    public void switchScene(Context from, Class to) {
         Intent game = new Intent(from, to);
         startActivity(game);
         finish();

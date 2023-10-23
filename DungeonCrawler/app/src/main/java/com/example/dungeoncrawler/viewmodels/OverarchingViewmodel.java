@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
-import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
 
@@ -29,13 +28,13 @@ public class OverarchingViewmodel {
 
     private static CountDownTimer timer;
 
-    public OverarchingViewmodel(){
+    public OverarchingViewmodel() {
         leaderboard = Leaderboard.getLeaderboard();
         score = Score.getScore();
         player = Player.getPlayer();
     }
 
-    public static int decreaseScore(int decrease){
+    public static int decreaseScore(int decrease) {
         if (score.decrement(decrease) < 0) {
             score.setCount(0);
         }
@@ -43,38 +42,38 @@ public class OverarchingViewmodel {
 
     }
 
-    private static void sceneChange(Context context, Class destination){
+    private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
         startActivity(context, intent, null);
-        ((Activity)context).finish();
+        ((Activity) context).finish();
     }
 
-    public static void sceneChangeRoom(Context context, Class destination){
+    public static void sceneChangeRoom(Context context, Class destination) {
         sceneChange(context, destination);
         player.setX(1050);
         player.setY(100);
     }
-    public static void sceneToRoom(Context context, Class destination){
+    public static void sceneToRoom(Context context, Class destination) {
         sceneChange(context, destination);
         player.setX(1050);
         player.setY(100);
         startTimer();
     }
-    public static void sceneToLeaderboard(Context context, Class destination){
+    public static void sceneToLeaderboard(Context context, Class destination) {
         sceneChange(context, destination);
         stopTimer();
         addScore();
     }
-    public static void sceneToConfig(Context context, Class destination){
+    public static void sceneToConfig(Context context, Class destination) {
         sceneChange(context, destination);
         resetScore();
     }
-    private static void addScore(){
+    public static void addScore() {
         String username = player.getName();
         String date = getDate();
         leaderboard.addScore(username, score.getCount(), date);
     }
-    private static void startTimer(){
+    private static void startTimer() {
         timer = new CountDownTimer(100000, 1000) {
             @Override
             public void onTick(long l) {
@@ -91,7 +90,7 @@ public class OverarchingViewmodel {
     public static boolean inBoundEasy() {
         return false;
     }
-    public static void stopTimer(){
+    public static void stopTimer() {
         timer.cancel();
     }
     private static void resetScore() {
@@ -101,19 +100,19 @@ public class OverarchingViewmodel {
     public static void setPlayerSprite(int sprite) {
         player.setDrawable(sprite);
     }
-    public static int getPlayerSprite(){
+    public static int getPlayerSprite() {
         return player.getDrawable();
     }
     public static void setPlayerName(String name) {
         player.setName(name);
     }
-    public static String getPlayerName(){
+    public static String getPlayerName() {
         return player.getName();
     }
     public static void setPlayerHealth(int health) {
         player.setHealth(health);
     }
-    public static int getPlayerHealth(){
+    public static int getPlayerHealth() {
         return player.getHealth();
     }
 
@@ -121,20 +120,20 @@ public class OverarchingViewmodel {
     public static void setPlayerDifficulty(int difficulty) {
         player.setDifficulty(difficulty);
     }
-    public static int getPlayerDifficulty(){
+    public static int getPlayerDifficulty() {
         return player.getDifficulty();
     }
     public static void setPlayerDifficultyName(String difficultyName) {
         player.setDifficultyName(difficultyName);
     }
-    public static String getPlayerDifficultyName(){
+    public static String getPlayerDifficultyName() {
         return player.getDifficultyName();
     }
 
-    public static String[] getLeaderboardNames(){
+    public static String[] getLeaderboardNames() {
         return leaderboard.getNames();
     }
-    public static int[] getLeaderboardScores(){
+    public static int[] getLeaderboardScores() {
         return leaderboard.getScores();
     }
     public static String[] getLeaderboardDates() {
@@ -154,36 +153,38 @@ public class OverarchingViewmodel {
         return dateFormat.format(calendar.getTime());
     }
 
-    private static void setMovementStrategy(Movement newMovement) {
+    public static void setMovementStrategy(Movement newMovement) {
         movement = newMovement;
     }
-    private static void move(int step){
+    public static void move(int step) {
         movement.move(step);
     }
     public static void keyDown(int keyCode) {
         Movement movement = null;
         int step = 10;
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_UP:
-                MoveUp moveUp = new MoveUp();
-                OverarchingViewmodel.setMovementStrategy(moveUp);
-                move(step);
-                break;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                MoveDown moveDown = new MoveDown();
-                OverarchingViewmodel.setMovementStrategy(moveDown);
-                move(step);
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                MoveLeft moveLeft = new MoveLeft();
-                OverarchingViewmodel.setMovementStrategy(moveLeft);
-                move(step);
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                MoveRight moveRight = new MoveRight();
-                OverarchingViewmodel.setMovementStrategy(moveRight);
-                move(step);
-                break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            MoveUp moveUp = new MoveUp();
+            OverarchingViewmodel.setMovementStrategy(moveUp);
+            move(step);
+            break;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            MoveDown moveDown = new MoveDown();
+            OverarchingViewmodel.setMovementStrategy(moveDown);
+            move(step);
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            MoveLeft moveLeft = new MoveLeft();
+            OverarchingViewmodel.setMovementStrategy(moveLeft);
+            move(step);
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            MoveRight moveRight = new MoveRight();
+            OverarchingViewmodel.setMovementStrategy(moveRight);
+            move(step);
+            break;
+        default:
+            break;
         }
     }
 
@@ -202,9 +203,9 @@ public class OverarchingViewmodel {
     }
 
     public static void setPlayerX(int x) {
-         player.setX(x);
+        player.setX(x);
     }
     public static void setPlayerY(int y) {
-         player.setY(y);
+        player.setY(y);
     }
 }
