@@ -98,6 +98,7 @@ public class OverarchingViewmodel {
         score.setCount(100);
     }
 
+
     public static void setPlayerSprite(int sprite) {
         player.setDrawable(sprite);
     }

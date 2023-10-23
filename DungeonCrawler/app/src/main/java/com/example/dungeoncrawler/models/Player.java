@@ -23,6 +23,8 @@ public class Player implements Subject {
 
     private int sprite;
     private ArrayList<Observer> observers;
+    private int x; // X-coordinate of the player's position
+    private int y; // Y-coordinate of the player's position
 
     private Player() {
         health = 100;
@@ -31,6 +33,8 @@ public class Player implements Subject {
         x = 0;
         y = 0;
         observers = new ArrayList<>();
+        x = 0; // Initial X-coordinate
+        y = 0; // Initial Y-coordinate
     }
 
     public static Player getPlayer() {
@@ -78,6 +82,29 @@ public class Player implements Subject {
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void moveLeft(int step) {
+        x -= step;
+    }
+
+    public void moveRight(int step) {
+        x += step;
+    }
+
+    public void moveUp(int step) {
+        y -= step;
+    }
+
+    public void moveDown(int step) {
+        y += step;
     }
 
     public int getSprite() {
