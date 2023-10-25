@@ -22,7 +22,9 @@ public class OverarchingViewmodel {
     private static Leaderboard leaderboard;
     private static Score score;
     private static Player player;
-    private static Movement movement;
+    private static PlayerMovement playerMovement;
+
+    private static int level;
 
 
 
@@ -32,6 +34,7 @@ public class OverarchingViewmodel {
         leaderboard = Leaderboard.getLeaderboard();
         score = Score.getScore();
         player = Player.getPlayer();
+        level = 0;
     }
 
     public static int decreaseScore(int decrease) {
@@ -52,9 +55,11 @@ public class OverarchingViewmodel {
         sceneChange(context, destination);
         player.setX(1050);
         player.setY(100);
+        level++;
     }
     public static void sceneToRoom(Context context, Class destination) {
         sceneChange(context, destination);
+        level = 1;
         player.setX(1050);
         player.setY(100);
         startTimer();
@@ -153,14 +158,14 @@ public class OverarchingViewmodel {
         return dateFormat.format(calendar.getTime());
     }
 
-    public static void setMovementStrategy(Movement newMovement) {
-        movement = newMovement;
+    public static void setMovementStrategy(PlayerMovement newPlayerMovement) {
+        playerMovement = newPlayerMovement;
     }
     public static void move(int step) {
-        movement.move(step);
+        playerMovement.move(step, level);
     }
     public static void keyDown(int keyCode) {
-        Movement movement = null;
+        PlayerMovement playerMovement = null;
         int step = 10;
         switch (keyCode) {
         case KeyEvent.KEYCODE_DPAD_UP:

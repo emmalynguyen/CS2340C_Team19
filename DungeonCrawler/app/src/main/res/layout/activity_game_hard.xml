@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="767dp"
-        android:layout_height="767dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:srcCompat="@drawable/level3" />
 
     <TextView

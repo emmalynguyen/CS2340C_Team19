@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:srcCompat="@drawable/level3" />
+        app:srcCompat="@drawable/level1" />
 
     <TextView
         android:id="@+id/scoreText"
