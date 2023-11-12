@@ -2,33 +2,46 @@ package com.example.dungeoncrawler.models;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.Observer;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.viewmodels.Subject;
 
 import java.util.ArrayList;
 
-public class FireEnemy implements Enemy, Subject {
+public class EarthEnemy implements Enemy, Subject {
     private int x;
     private int y;
     private int sprite;
-    private ArrayList<Observer> observers;
     private int speed;
+    private ArrayList<Observer> observers;
+    private int direction;
 
-    public FireEnemy() {
-        sprite = R.drawable.monster_elemental_fire;
+    public EarthEnemy() {
+        sprite = R.drawable.monster_elemental_plant;
         x = 0;
         y = 0;
-        speed = -20;
+        speed = 20;
         observers = new ArrayList<>();
+        direction = 0;
     }
 
     public void move(){
-        y += speed;
-        if(y <= 150 && speed < 0) {
-            speed *= -1;
+        switch (direction) {
+            case 0:
+                x += speed;
+                break;
+            case 1:
+                y += speed;
+                break;
+            case 2:
+                x -= speed;
+                break;
+            case 3:
+                y -= speed;
+                direction = -1;
+                break;
         }
-        if(y >= 570 && speed > 0) {
-            speed *= -1;
-        }
+        direction++;
+
     }
 
     public boolean checkCollision(int x, int y){

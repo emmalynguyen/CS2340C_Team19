@@ -35,7 +35,7 @@ public class AirEnemy implements Enemy, Subject {
 
     public boolean checkCollision(int x, int y){
         if((this.y > y - 30 && this.y < y + 200)
-              && (this.x > x - 40 && this.x < x + 150)) {
+              && (this.x > x - 20 && this.x < x + 150)) {
             return true;
         }
         return false;

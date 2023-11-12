@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import androidx.lifecycle.LiveData;
 
 import com.example.dungeoncrawler.models.AirEnemy;
+import com.example.dungeoncrawler.models.EarthEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.FireEnemy;
 import com.example.dungeoncrawler.models.Leaderboard;
@@ -113,7 +114,7 @@ public class OverarchingViewmodel {
         timer.cancel();
     }
     private static void resetScore() {
-        score.setCount(200);
+        score.setCount(300);
     }
 
     public static void setPlayerSprite(int sprite) {
@@ -180,7 +181,6 @@ public class OverarchingViewmodel {
     }
     public static void move(int step) {
         playerMovement.move(step, level);
-        player.notifyObservers();
     }
     public static void keyDown(int keyCode) {
         PlayerMovement playerMovement = null;
@@ -219,6 +219,9 @@ public class OverarchingViewmodel {
             enemy = new FireEnemy();
         } else if(enemyType.equals("water")) {
             enemy = new WaterEnemy();
+        }
+        else if(enemyType.equals("earth")) {
+            enemy = new EarthEnemy();
         }
         return enemy;
     }

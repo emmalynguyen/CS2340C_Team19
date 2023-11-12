@@ -45,6 +45,39 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
+        android:id="@+id/monsterView"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="736dp"
+        android:layout_marginTop="252dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/monster_elemental_water" />
+
+    <ImageView
+        android:id="@+id/monsterView2"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="500dp"
+        android:layout_marginTop="252dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/monster_chort" />
+    <ImageView
+        android:id="@+id/monsterView3"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="500dp"
+        android:layout_marginTop="252dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/monster_chort" />
+
+
+    <ImageView
         android:id="@+id/spriteView"
         android:layout_width="50dp"
         android:layout_height="80dp"

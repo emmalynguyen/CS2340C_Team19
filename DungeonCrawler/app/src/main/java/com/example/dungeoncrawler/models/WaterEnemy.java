@@ -12,27 +12,42 @@ public class WaterEnemy implements Enemy, Subject {
     private int sprite;
     private ArrayList<Observer> observers;
     private int speed;
+    private int direction;
 
     public WaterEnemy() {
         sprite = R.drawable.monster_elemental_water;
         x = 0;
         y = 0;
-        speed = 20;
+        speed = 35;
         observers = new ArrayList<>();
+        direction = 0;
     }
 
     public void move(){
-        y += speed;
-        if(y <= 50 && speed < 0) {
-            speed *= -1;
+        switch (direction / 6) {
+            case 0:
+                x += speed;
+                break;
+            case 1:
+                y += speed;
+                break;
+            case 2:
+                x -= speed;
+                break;
+            case 3:
+                y -= speed;
+                break;
+            case 4:
+                direction = -1;
         }
-        if(x >= 480 && speed > 0) {
-            speed *= -1;
-        }
-//        notifyObservers();
+        direction++;
     }
 
     public boolean checkCollision(int x, int y){
+        if((this.y > y - 30 && this.y < y + 200)
+                && (this.x > x - 20 && this.x < x + 150)) {
+            return true;
+        }
         return false;
     }
 

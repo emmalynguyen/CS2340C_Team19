@@ -48,7 +48,8 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         difficultyTextView.setText("Difficulty level:" + difficultyLevel);
 
         TextView healthTextView = findViewById(R.id.healthText);
-        healthTextView.setText("You have " + health + " health");
+        healthTextView.setText("");
+        // healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
 
@@ -66,13 +67,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 
         OverarchingViewmodel.addEnemy(airEnemy);
         OverarchingViewmodel.addEnemy(fireEnemy);
-
-//        ImageView monsterView = findViewById(R.id.monsterView);
-//        monsterView.setImageResource(airEnemy.getSprite());
-//        monsterView.setX(airEnemy.getX());
-//        monsterView.setY(airEnemy.getY());
-//        ImageView monsterView2 = findViewById(R.id.monsterView2);
-//        monsterView2.setImageResource(fireEnemy.getSprite());
+        update();
     }
 
 
@@ -102,7 +97,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         }
         for (Enemy enemy : enemies) {
             if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
-                OverarchingViewmodel.decreaseScore(5 * OverarchingViewmodel.getLevel());
+                OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
             }
         }
 
