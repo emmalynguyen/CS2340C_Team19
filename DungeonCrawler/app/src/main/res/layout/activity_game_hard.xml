@@ -46,6 +46,28 @@
         />
 
     <ImageView
+        android:id="@+id/monsterView"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="600dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/monster_elemental_fire" />
+
+    <ImageView
+        android:id="@+id/monsterView2"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="600dp"
+        android:layout_marginTop="400dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/female_dwarf" />
+
+    <ImageView
         android:id="@+id/spriteView"
         android:layout_width="50dp"
         android:layout_height="80dp"

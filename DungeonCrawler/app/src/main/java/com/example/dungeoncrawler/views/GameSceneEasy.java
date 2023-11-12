@@ -2,6 +2,8 @@ package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Debug;
+import android.util.Log;
 import android.view.KeyEvent;
 
 import android.os.Bundle;
@@ -10,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
+import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
+
+import java.util.ArrayList;
 
 public class GameSceneEasy extends AppCompatActivity implements Observer {
 
@@ -27,6 +32,8 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
+
+
         OverarchingViewmodel.setObserver(this);
 
         String username = OverarchingViewmodel.getPlayerName();
@@ -44,8 +51,28 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         healthTextView.setText("You have " + health + " health");
 
         TextView scoreText = findViewById(R.id.scoreText);
+
         OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: "
                 + value + "\nRoom 1"));
+
+        Enemy airEnemy = OverarchingViewmodel.createEnemy("air");
+        Enemy fireEnemy = OverarchingViewmodel.createEnemy("fire");
+
+        //player position is 1050, 100
+        airEnemy.setX(850);
+        airEnemy.setY(600);
+        fireEnemy.setX(1300);
+        fireEnemy.setY(600);
+
+        OverarchingViewmodel.addEnemy(airEnemy);
+        OverarchingViewmodel.addEnemy(fireEnemy);
+
+//        ImageView monsterView = findViewById(R.id.monsterView);
+//        monsterView.setImageResource(airEnemy.getSprite());
+//        monsterView.setX(airEnemy.getX());
+//        monsterView.setY(airEnemy.getY());
+//        ImageView monsterView2 = findViewById(R.id.monsterView2);
+//        monsterView2.setImageResource(fireEnemy.getSprite());
     }
 
 
@@ -54,9 +81,30 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
+
+        ArrayList<Enemy> enemies = OverarchingViewmodel.getEnemies();
+
+        if(enemies.size() >= 2){
+            ImageView monsterView = findViewById(R.id.monsterView);
+            monsterView.setImageResource(enemies.get(0).getSprite());
+            monsterView.setX(enemies.get(0).getX());
+            monsterView.setY(enemies.get(0).getY());
+            ImageView monsterView2 = findViewById(R.id.monsterView2);
+            monsterView2.setImageResource(enemies.get(1).getSprite());
+            monsterView2.setX(enemies.get(1).getX());
+            monsterView2.setY(enemies.get(1).getY());
+        }
+
+
         if (OverarchingViewmodel.getPlayerY() >= 550) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
+        }
+        for (Enemy enemy : enemies) {
+            if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
+                OverarchingViewmodel.removeObserver(this);
+                OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameOver.class);
+            }
         }
     }
 

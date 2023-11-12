@@ -1,4 +1,4 @@
-package com.example.dungeoncrawler.viewmodels;
+package com.example.dungeoncrawler.models;
 
 
 public interface PlayerMovement {

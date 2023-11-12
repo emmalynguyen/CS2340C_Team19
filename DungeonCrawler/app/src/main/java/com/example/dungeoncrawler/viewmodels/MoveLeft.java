@@ -1,6 +1,8 @@
 package com.example.dungeoncrawler.viewmodels;
 
 
+import com.example.dungeoncrawler.models.PlayerMovement;
+
 public class MoveLeft implements PlayerMovement {
     @Override
     public void move(int step, int level) {
@@ -26,7 +28,7 @@ public class MoveLeft implements PlayerMovement {
     }
     @Override
     public boolean canMoveMap1() {
-        if (OverarchingViewmodel.getPlayerX() <= 835 || OverarchingViewmodel.getPlayerY() >= 480) {
+        if (OverarchingViewmodel.getPlayerX() <= 835 || OverarchingViewmodel.getPlayerY() >= 490) {
             return false;
         }
         if (OverarchingViewmodel.getPlayerY() <= 290
@@ -41,7 +43,16 @@ public class MoveLeft implements PlayerMovement {
 
     @Override
     public boolean canMoveMap2() {
-        if (OverarchingViewmodel.getPlayerX() <= 835 || OverarchingViewmodel.getPlayerY() >= 480) {
+        if(OverarchingViewmodel.getPlayerX() <= 935
+                && (OverarchingViewmodel.getPlayerY() <= 80 || OverarchingViewmodel.getPlayerY() >= 380)){
+            return false;
+        }
+        return canMoveMap1() && true;
+    }
+
+    @Override
+    public boolean canMoveMap3() {
+        if (OverarchingViewmodel.getPlayerX() <= 835 || OverarchingViewmodel.getPlayerY() >= 490) {
             return false;
         }
         if (OverarchingViewmodel.getPlayerY() <= 290
@@ -51,10 +62,5 @@ public class MoveLeft implements PlayerMovement {
             }
         }
         return true;
-    }
-
-    @Override
-    public boolean canMoveMap3() {
-        return false;
     }
 }

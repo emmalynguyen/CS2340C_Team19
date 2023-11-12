@@ -10,11 +10,17 @@ import android.view.KeyEvent;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.dungeoncrawler.models.AirEnemy;
+import com.example.dungeoncrawler.models.Enemy;
+import com.example.dungeoncrawler.models.FireEnemy;
 import com.example.dungeoncrawler.models.Leaderboard;
 import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.models.PlayerMovement;
 import com.example.dungeoncrawler.models.Score;
+import com.example.dungeoncrawler.models.WaterEnemy;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class OverarchingViewmodel {
@@ -26,6 +32,8 @@ public class OverarchingViewmodel {
 
     private static int level;
 
+    private static ArrayList<Enemy> enemies;
+
 
 
     private static CountDownTimer timer;
@@ -35,6 +43,7 @@ public class OverarchingViewmodel {
         score = Score.getScore();
         player = Player.getPlayer();
         level = 0;
+        enemies = new ArrayList<>();
     }
 
     public static int decreaseScore(int decrease) {
@@ -47,6 +56,7 @@ public class OverarchingViewmodel {
 
     private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
+        enemies = new ArrayList<>();
         startActivity(context, intent, null);
         ((Activity) context).finish();
     }
@@ -84,6 +94,9 @@ public class OverarchingViewmodel {
             public void onTick(long l) {
                 decreaseScore(1);
                 player.notifyObservers();
+//                for(Enemy enemy : enemies) {
+//                    enemy.move();
+//                }
             }
 
             @Override
@@ -191,6 +204,25 @@ public class OverarchingViewmodel {
         default:
             break;
         }
+    }
+
+    public static Enemy createEnemy(String enemyType) {
+        Enemy enemy = null;
+        if(enemyType.equals("air")) {
+            enemy = new AirEnemy();
+        } else if(enemyType.equals("fire")) {
+            enemy = new FireEnemy();
+        } else if(enemyType.equals("water")) {
+            enemy = new WaterEnemy();
+        }
+        return enemy;
+    }
+    public static void addEnemy(Enemy enemy){
+        enemies.add(enemy);
+    }
+
+    public static ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     public static void setObserver(Observer observer) {
