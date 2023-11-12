@@ -27,10 +27,10 @@ public class MoveRight implements PlayerMovement {
     }
     @Override
     public boolean canMoveMap1() {
-        if (OverarchingViewmodel.getPlayerX() >= 1250 || OverarchingViewmodel.getPlayerY() >= 490) {
+        if (OverarchingViewmodel.getPlayerX() >= 1300 || OverarchingViewmodel.getPlayerY() >= 620) {
             return false;
         }
-        if (OverarchingViewmodel.getPlayerY() <= 290 && OverarchingViewmodel.getPlayerY() >= 200) {
+        if (OverarchingViewmodel.getPlayerY() <= 350 && OverarchingViewmodel.getPlayerY() >= 270) {
             if (OverarchingViewmodel.getPlayerX() >= 970
                     && OverarchingViewmodel.getPlayerX() <= 1110) {
                 return false;
@@ -41,8 +41,8 @@ public class MoveRight implements PlayerMovement {
 
     @Override
     public boolean canMoveMap2() {
-        if(OverarchingViewmodel.getPlayerX() >= 1160
-                && (OverarchingViewmodel.getPlayerY() <= 80 || OverarchingViewmodel.getPlayerY() >= 380)){
+        if(OverarchingViewmodel.getPlayerX() >= 1180
+                && (OverarchingViewmodel.getPlayerY() <= 120 || OverarchingViewmodel.getPlayerY() >= 500)){
             return false;
         }
         return canMoveMap1() && true;
@@ -50,14 +50,15 @@ public class MoveRight implements PlayerMovement {
 
     @Override
     public boolean canMoveMap3() {
-        if (OverarchingViewmodel.getPlayerX() >= 1250 || OverarchingViewmodel.getPlayerY() >= 490) {
-            return false;
-        }
-        if (OverarchingViewmodel.getPlayerY() <= 290 && OverarchingViewmodel.getPlayerY() >= 200) {
-            if (OverarchingViewmodel.getPlayerX() >= 970) {
-                return false;
-            }
-        }
-        return true;
+        return canMoveMap1();
+//        if (OverarchingViewmodel.getPlayerX() >= 1250 || OverarchingViewmodel.getPlayerY() >= 490) {
+//            return false;
+//        }
+//        if (OverarchingViewmodel.getPlayerY() <= 330 && OverarchingViewmodel.getPlayerY() >= 270) {
+//            if (OverarchingViewmodel.getPlayerX() >= 970) {
+//                return false;
+//            }
+//        }
+//        return true; //&& canMoveMap1();
     }
 }

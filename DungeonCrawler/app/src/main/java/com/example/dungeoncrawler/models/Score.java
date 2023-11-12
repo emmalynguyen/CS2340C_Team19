@@ -8,7 +8,7 @@ public class Score {
     private static MutableLiveData<Integer> count = new MutableLiveData<>();
 
     private Score() {
-        this.count.postValue(100);
+        this.count.postValue(200);
     }
 
     public static Score getScore() {

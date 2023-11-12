@@ -60,9 +60,9 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 
         //player position is 1050, 100
         airEnemy.setX(850);
-        airEnemy.setY(600);
-        fireEnemy.setX(1300);
-        fireEnemy.setY(600);
+        airEnemy.setY(700);
+        fireEnemy.setX(1340);
+        fireEnemy.setY(700);
 
         OverarchingViewmodel.addEnemy(airEnemy);
         OverarchingViewmodel.addEnemy(fireEnemy);
@@ -96,15 +96,19 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         }
 
 
-        if (OverarchingViewmodel.getPlayerY() >= 550) {
+        if (OverarchingViewmodel.getPlayerY() >= 650) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneMedium.class);
         }
         for (Enemy enemy : enemies) {
             if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
-                OverarchingViewmodel.removeObserver(this);
-                OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameOver.class);
+                OverarchingViewmodel.decreaseScore(5 * OverarchingViewmodel.getLevel());
             }
+        }
+
+        if(OverarchingViewmodel.getCount() <= 0) {
+            OverarchingViewmodel.removeObserver(this);
+            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, LoseEnding.class);
         }
     }
 

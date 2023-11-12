@@ -28,17 +28,17 @@ public class MoveDown implements PlayerMovement {
 
     @Override
     public boolean canMoveMap1() {
-        if (OverarchingViewmodel.getPlayerY() >= 480) {
-            if (OverarchingViewmodel.getPlayerX() >= 1050
-                    && OverarchingViewmodel.getPlayerX() <= 1090) {
+        if (OverarchingViewmodel.getPlayerY() >= 600) {
+            if (OverarchingViewmodel.getPlayerX() >= 1030
+                    && OverarchingViewmodel.getPlayerX() <= 1080) {
                 return true;
             }
             return false;
         }
         if (OverarchingViewmodel.getPlayerX() >= 980
                 && OverarchingViewmodel.getPlayerX() <= 1110) {
-            if (OverarchingViewmodel.getPlayerY() >= 190
-                    && OverarchingViewmodel.getPlayerY() <= 290) {
+            if (OverarchingViewmodel.getPlayerY() >= 250
+                    && OverarchingViewmodel.getPlayerY() <= 350) {
                 return false;
             }
         }
@@ -47,8 +47,8 @@ public class MoveDown implements PlayerMovement {
 
     @Override
     public boolean canMoveMap2() {
-        if (OverarchingViewmodel.getPlayerY() >= 380
-                && (OverarchingViewmodel.getPlayerX() <= 935 || OverarchingViewmodel.getPlayerX() >= 1150)){
+        if (OverarchingViewmodel.getPlayerY() >= 480
+                && (OverarchingViewmodel.getPlayerX() <= 900 || OverarchingViewmodel.getPlayerX() >= 1200)){
             return false;
         }
         return canMoveMap1() && true;
@@ -56,19 +56,26 @@ public class MoveDown implements PlayerMovement {
 
     @Override
     public boolean canMoveMap3() {
-        if (OverarchingViewmodel.getPlayerY() >= 480) {
-            if (OverarchingViewmodel.getPlayerX() >= 1050
-                    && OverarchingViewmodel.getPlayerX() <= 1090) {
-                return true;
-            }
-            return false;
-        }
         if (OverarchingViewmodel.getPlayerX() >= 980) {
-            if (OverarchingViewmodel.getPlayerY() >= 190
-                    && OverarchingViewmodel.getPlayerY() <= 290) {
+            if (OverarchingViewmodel.getPlayerY() >= 250
+                    && OverarchingViewmodel.getPlayerY() <= 350) {
                 return false;
             }
         }
-        return true;
+        return canMoveMap1();
+//        if (OverarchingViewmodel.getPlayerY() >= 580) {
+//            if (OverarchingViewmodel.getPlayerX() >= 1050
+//                    && OverarchingViewmodel.getPlayerX() <= 1090) {
+//                return true;
+//            }
+//            return false;
+//        }
+//        if (OverarchingViewmodel.getPlayerX() >= 980) {
+//            if (OverarchingViewmodel.getPlayerY() >= 190
+//                    && OverarchingViewmodel.getPlayerY() <= 290) {
+//                return false;
+//            }
+//        }
+//        return true;
     }
 }

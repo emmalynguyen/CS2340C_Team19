@@ -31,8 +31,8 @@ public class MoveUp implements PlayerMovement {
             return false;
         }
         if (OverarchingViewmodel.getPlayerX() >= 980 && OverarchingViewmodel.getPlayerX() <= 1110) {
-            if (OverarchingViewmodel.getPlayerY() <= 300
-                    && OverarchingViewmodel.getPlayerY() >= 200) {
+            if (OverarchingViewmodel.getPlayerY() <= 370
+                    && OverarchingViewmodel.getPlayerY() >= 270) {
                 return false;
             }
         }
@@ -41,8 +41,8 @@ public class MoveUp implements PlayerMovement {
 
     @Override
     public boolean canMoveMap2() {
-        if (OverarchingViewmodel.getPlayerY() <= 80
-                && (OverarchingViewmodel.getPlayerX() <= 935 || OverarchingViewmodel.getPlayerX() >= 1150)){
+        if (OverarchingViewmodel.getPlayerY() <= 150
+                && (OverarchingViewmodel.getPlayerX() <= 900 || OverarchingViewmodel.getPlayerX() >= 1200)){
             return false;
         }
         return canMoveMap1() && true;
@@ -50,15 +50,12 @@ public class MoveUp implements PlayerMovement {
 
     @Override
     public boolean canMoveMap3() {
-        if (OverarchingViewmodel.getPlayerY() <= 50) {
-            return false;
-        }
         if (OverarchingViewmodel.getPlayerX() >= 980) {
-            if (OverarchingViewmodel.getPlayerY() <= 300
-                    && OverarchingViewmodel.getPlayerY() >= 200) {
+            if (OverarchingViewmodel.getPlayerY() <= 370
+                    && OverarchingViewmodel.getPlayerY() >= 270) {
                 return false;
             }
         }
-        return true;
+        return canMoveMap1();
     }
 }

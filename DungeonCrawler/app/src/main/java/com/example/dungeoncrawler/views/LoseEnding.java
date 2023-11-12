@@ -1,50 +1,64 @@
 package com.example.dungeoncrawler.views;
 
-import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import com.example.dungeoncrawler.databinding.ActivityLoseEndingBinding;
+
+import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.dungeoncrawler.R;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
+
 
 public class LoseEnding extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-private ActivityLoseEndingBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ending);
 
-     binding = ActivityLoseEndingBinding.inflate(getLayoutInflater());
-     setContentView(binding.getRoot());
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_lose_ending);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        String[] names = OverarchingViewmodel.getLeaderboardNames();
+        int[] scores = OverarchingViewmodel.getLeaderboardScores();
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
+        String[] dates = OverarchingViewmodel.getLeaderboardDates();
+
+        TextView currentScoreText = findViewById(R.id.currentScore);
+        currentScoreText.setText(OverarchingViewmodel.getPlayerName()
+                + "\n0");
+        TextView currentScoreDate = findViewById(R.id.currentDate);
+        currentScoreDate.setText("You Lose!\n" + OverarchingViewmodel.getDate());
+
+        TextView scoreText2 = findViewById(R.id.scoreText2);
+        scoreText2.setText(names[1] + "\n" + scores[1]);
+        TextView scoreText3 = findViewById(R.id.scoreText3);
+        scoreText3.setText(names[2] + "\n" + scores[2]);
+        TextView scoreText4 = findViewById(R.id.scoreText4);
+        scoreText4.setText(names[3] + "\n" + scores[3]);
+        TextView scoreText5 = findViewById(R.id.scoreText5);
+        scoreText5.setText(names[4] + "\n" + scores[4]);
+        TextView scoreText6 = findViewById(R.id.scoreText6);
+        scoreText6.setText(names[5] + "\n" + scores[5]);
+
+        TextView dateText2 = findViewById(R.id.dateText2);
+        dateText2.setText(dates[1]);
+        TextView dateText3 = findViewById(R.id.dateText3);
+        dateText3.setText(dates[2]);
+        TextView dateText4 = findViewById(R.id.dateText4);
+        dateText4.setText(dates[3]);
+        TextView dateText5 = findViewById(R.id.dateText5);
+        dateText5.setText(dates[4]);
+        TextView dateText6 = findViewById(R.id.dateText6);
+        dateText6.setText(dates[5]);
+
+
+        Button restartButton = findViewById(R.id.restartButton);
+        restartButton.setOnClickListener(v -> {
+            OverarchingViewmodel.sceneToConfig(LoseEnding.this, InitialConfiguration.class);
         });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_lose_ending);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }

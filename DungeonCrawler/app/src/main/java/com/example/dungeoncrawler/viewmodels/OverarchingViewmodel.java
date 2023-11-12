@@ -84,19 +84,20 @@ public class OverarchingViewmodel {
         resetScore();
     }
     public static void addScore() {
-        String username = player.getName();
-        String date = getDate();
-        leaderboard.addScore(username, score.getCount(), date);
+        if(score.getCount() != 0) {
+            String username = player.getName();
+            String date = getDate();
+            leaderboard.addScore(username, score.getCount(), date);
+        }
     }
     private static void startTimer() {
         timer = new CountDownTimer(100000, 1000) {
             @Override
             public void onTick(long l) {
                 decreaseScore(1);
-                player.notifyObservers();
-//                for(Enemy enemy : enemies) {
-//                    enemy.move();
-//                }
+                for(Enemy enemy : enemies) {
+                    enemy.move();
+                }
             }
 
             @Override
@@ -112,7 +113,7 @@ public class OverarchingViewmodel {
         timer.cancel();
     }
     private static void resetScore() {
-        score.setCount(100);
+        score.setCount(200);
     }
 
     public static void setPlayerSprite(int sprite) {
@@ -160,6 +161,9 @@ public class OverarchingViewmodel {
     public static LiveData<Integer> getScore() {
         return score.getMutableLiveData();
     }
+    public static int getCount() {
+        return score.getCount();
+    }
 
     public static void updateMyLiveData(int count) {
         score.setCount(count);
@@ -176,6 +180,7 @@ public class OverarchingViewmodel {
     }
     public static void move(int step) {
         playerMovement.move(step, level);
+        player.notifyObservers();
     }
     public static void keyDown(int keyCode) {
         PlayerMovement playerMovement = null;
@@ -244,5 +249,9 @@ public class OverarchingViewmodel {
     }
     public static void setPlayerY(int y) {
         player.setY(y);
+    }
+
+    public static int getLevel() {
+        return level;
     }
 }

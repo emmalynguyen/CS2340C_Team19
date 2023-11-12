@@ -54,7 +54,7 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
-        if (OverarchingViewmodel.getPlayerY() >= 500) {
+        if (OverarchingViewmodel.getPlayerY() >= 650) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneChangeRoom(GameSceneMedium.this, GameSceneHard.class);
         }
