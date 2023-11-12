@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dungeon_background"
+    android:layout_gravity="center"
+    tools:context=".views.Ending">
+
+    <TextView
+        android:id="@+id/HighScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/vt323"
+        android:text="High Scores"
+        android:textColor="@color/teal_200"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <TextView
+        android:id="@+id/currentScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="10sp"
+        android:text="Empty \n0"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HighScores"/>
+    <TextView
+        android:id="@+id/currentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="15sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HighScores"/>
+
+
+    <TextView
+        android:id="@+id/scoreText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="10sp"
+        android:text="Empty \n0"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentScore"/>
+    <TextView
+        android:id="@+id/dateText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentScore"/>
+
+
+
+
+    <TextView
+        android:id="@+id/scoreText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:text="Empty \n0"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText2"/>
+    <TextView
+        android:id="@+id/dateText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText2"/>
+
+
+    <TextView
+        android:id="@+id/scoreText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:text="Empty \n0"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText3"/>
+    <TextView
+        android:id="@+id/dateText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText3"/>
+
+
+    <TextView
+        android:id="@+id/scoreText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:text="Empty \n0"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText4"/>
+    <TextView
+        android:id="@+id/dateText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText4"/>
+
+
+    <TextView
+        android:id="@+id/scoreText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:text="Empty \n0"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText5"/>
+    <TextView
+        android:id="@+id/dateText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="150sp"
+        android:text="Date"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText5"/>
+
+
+
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:text="Restart"
+        android:textColor="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreText6" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
