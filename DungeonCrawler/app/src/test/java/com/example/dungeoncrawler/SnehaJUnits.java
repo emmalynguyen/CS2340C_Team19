@@ -24,4 +24,22 @@ public class SnehaJUnits {
         newPlayer.setSprite(0);
         assertEquals("Expected sprite chosen to be 0", 0, newPlayer.getSprite());
     }
+<<<<<<< Updated upstream
+=======
+
+    @Test
+    public void checkDifficultyHard() {
+        Player newPlayer = Player.getPlayer();
+        newPlayer.setDifficulty(3);
+        assertEquals(3, newPlayer.getDifficulty());
+    }
+    @Test
+    public void checkDefaultName() {
+        Player newPlayer = Player.getPlayer();
+        assertEquals("Name should be null", null, newPlayer.getName());
+    }
+
+
+
+>>>>>>> Stashed changes
 }
