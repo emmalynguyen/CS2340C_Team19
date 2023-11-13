@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
@@ -114,66 +115,65 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         OverarchingViewmodel.keyDown(keyCode);
         return super.onKeyDown(keyCode, event);
-
-//        Movement movement = null;
-//        switch (keyCode) {
-//            case KeyEvent.KEYCODE_DPAD_UP:
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_DOWN:
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_LEFT:
-//                MoveLeft moveLeft = new MoveLeft();
-//                OverarchingViewmodel.setMovementStrategy(moveLeft);
-//                OverarchingViewmodel.move(spriteView);
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_RIGHT:
-//                MoveRight moveRight = new MoveRight();
-//                OverarchingViewmodel.setMovementStrategy(moveRight);
-//                OverarchingViewmodel.move(spriteView);
-//                break;
+//
+////        Movement movement = null;
+////        switch (keyCode) {
+////            case KeyEvent.KEYCODE_DPAD_UP:
+////                break;
+////            case KeyEvent.KEYCODE_DPAD_DOWN:
+////                break;
+////            case KeyEvent.KEYCODE_DPAD_LEFT:
+////                MoveLeft moveLeft = new MoveLeft();
+////                OverarchingViewmodel.setMovementStrategy(moveLeft);
+////                OverarchingViewmodel.move(spriteView);
+////                break;
+////            case KeyEvent.KEYCODE_DPAD_RIGHT:
+////                MoveRight moveRight = new MoveRight();
+////                OverarchingViewmodel.setMovementStrategy(moveRight);
+////                OverarchingViewmodel.move(spriteView);
+////                break;
+////        }
+////        return super.onKeyDown(keyCode, event);
+//        });
+//
+//        Button hardButton = findViewById(R.id.hardButton);
+//        hardButton.setOnClickListener(v -> {
+//            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
+//        });
+//
+//        Button leaderboardButton = findViewById(R.id.leaderboardButton);
+//        leaderboardButton.setOnClickListener(v -> {
+//            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
+//        });
+//        }.start();
+//
+//        View yourGameView = findViewById(R.layout.activity_game_easy); // Replace with your game view's ID
+//        yourGameView.setFocusableInTouchMode(true);
+//        yourGameView.requestFocus();
+//        yourGameView.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                return onKeyDown(keyCode, event);
+//            }
+//        });
+//
+//        @Override
+//        public boolean onKeyDown(int keyCode, KeyEvent event) {
+//            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+//                // Move the player left
+//                player.moveLeft(stepSize);
+//            } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+//                // Move the player right
+//                player.moveRight(stepSize);
+//            } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+//                // Move the player up
+//                player.moveUp(stepSize);
+//            } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+//                // Move the player down
+//                player.moveDown(stepSize);
+//            }
+//            return super.onKeyDown(keyCode, event);
 //        }
-//        return super.onKeyDown(keyCode, event);
-        });
-
-        Button hardButton = findViewById(R.id.hardButton);
-        hardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneChangeRoom(GameSceneEasy.this, GameSceneHard.class);
-        });
-
-        Button leaderboardButton = findViewById(R.id.leaderboardButton);
-        leaderboardButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneToLeaderboard(GameSceneEasy.this, Ending.class);
-        });
-        }.start();
-
-        View yourGameView = findViewById(R.layout.activity_game_easy); // Replace with your game view's ID
-        yourGameView.setFocusableInTouchMode(true);
-        yourGameView.requestFocus();
-        yourGameView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                return onKeyDown(keyCode, event);
-            }
-        });
-
-        @Override
-        public boolean onKeyDown(int keyCode, KeyEvent event) {
-            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-                // Move the player left
-                player.moveLeft(stepSize);
-            } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                // Move the player right
-                player.moveRight(stepSize);
-            } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-                // Move the player up
-                player.moveUp(stepSize);
-            } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                // Move the player down
-                player.moveDown(stepSize);
-            }
-            return super.onKeyDown(keyCode, event);
-        }
-
+//
     }
-
 }
