@@ -23,7 +23,6 @@ public class EmmalyJUnits {
     }
 
     @Test
-<<<<<<< Updated upstream
     public void checkDifficultyHard() {
         Player newPlayer = Player.getPlayer();
         newPlayer.setDifficulty(1);
@@ -35,7 +34,8 @@ public class EmmalyJUnits {
         Player newPlayer = Player.getPlayer();
         newPlayer.setHealth(100);
         assertEquals(50, newPlayer.getHealth());
-=======
+    }
+    @Test
     public void checkEarthEnemySpeed() {
         EarthEnemy earth = new EarthEnemy();
         earth.setSpeed(20);
@@ -47,6 +47,5 @@ public class EmmalyJUnits {
         WaterEnemy water = new WaterEnemy();
         water.setSpeed(35);
         assertEquals(35,water.getSpeed());
->>>>>>> Stashed changes
     }
 }
