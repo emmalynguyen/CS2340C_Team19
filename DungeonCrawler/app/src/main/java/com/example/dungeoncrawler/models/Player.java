@@ -91,7 +91,7 @@ public class Player implements Subject {
 
     public void setX(int x) {
         this.x = x;
-        notifyObservers();
+//        notifyObservers();
     }
 
     public int getY() {
@@ -100,7 +100,7 @@ public class Player implements Subject {
 
     public void setY(int y) {
         this.y = y;
-        notifyObservers();
+//        notifyObservers();
     }
 
     @Override
