@@ -96,6 +96,7 @@ public class OverarchingViewmodel {
             @Override
             public void onTick(long l) {
                 decreaseScore(1);
+                player.notifyObservers();
                 for(Enemy enemy : enemies) {
                     enemy.move();
                 }
@@ -182,6 +183,7 @@ public class OverarchingViewmodel {
     }
     public static void move(int step) {
         playerMovement.move(step, level);
+        player.notifyObservers();
     }
     public static void keyDown(int keyCode) {
         PlayerMovement playerMovement = null;
