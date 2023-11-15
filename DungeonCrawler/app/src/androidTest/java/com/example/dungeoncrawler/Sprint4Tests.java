@@ -5,8 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.example.dungeoncrawler.models.AirEnemy;
+import com.example.dungeoncrawler.models.EarthEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.Score;
+import com.example.dungeoncrawler.models.WaterEnemy;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -81,6 +83,19 @@ public class Sprint4Tests implements Observer {
     public void getCount() {
         Score score = Score.getScore();
         assertEquals(score.getCount(), 300);
+    }
+
+    // Emmaly's Junits Sprint 4
+    @Test
+    public void checkEarthEnemySprite() {
+        EarthEnemy earth = new EarthEnemy();
+        assertEquals(2131165369,earth.getSprite());
+    }
+
+    @Test
+    public void checkWaterEnemySprite() {
+        WaterEnemy water = new WaterEnemy();
+        assertEquals(2131165370,water.getSprite());
     }
 
     @Override
