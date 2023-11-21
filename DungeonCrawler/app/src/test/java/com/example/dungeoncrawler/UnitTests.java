@@ -9,7 +9,7 @@ import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 public class UnitTests {
     @Test
-    public void LeaderboardBasic() {
+    public void leaderboardBasic() {
         Leaderboard leaderboard = com.example.dungeoncrawler.models.Leaderboard.getLeaderboard();
         leaderboard.clear();
         int[] scores = leaderboard.getScores();
@@ -26,7 +26,7 @@ public class UnitTests {
     }
 
     @Test
-    public void LeaderboardSort() {
+    public void leaderboardSort() {
         Leaderboard leaderboard = com.example.dungeoncrawler.models.Leaderboard.getLeaderboard();
         leaderboard.clear();
         int[] scores = leaderboard.getScores();
@@ -40,15 +40,15 @@ public class UnitTests {
         leaderboard.addScore("1", 1, null);
         leaderboard.addScore("4", 4, null);
 
-        for(int i = 1; i <= 5; i++) {
-            testArray[i] = 7-i;
+        for (int i = 1; i <= 5; i++) {
+            testArray[i] = 7 - i;
         }
 
         assertArrayEquals(testArray, scores);
     }
 
     @Test // Tanavi Test
-    public void ScoreMinimum(){
+    public void scoreMinimum() {
         Score score = Score.getScore();
         new OverarchingViewmodel();
 
@@ -59,9 +59,10 @@ public class UnitTests {
     }
 
     @Test // Tanavi Test
-    public void ScoreReset(){
+    public void scoreReset() {
         Score score = Score.getScore();
-        OverarchingViewmodel.addScore("hi");
+        OverarchingViewmodel.setPlayerName("Score Test");
+        OverarchingViewmodel.addScore();
         score = Score.getScore();
         //new OverarchingViewmodel();
 
@@ -70,7 +71,7 @@ public class UnitTests {
         OverarchingViewmodel.decreaseScore(10);
         assertEquals(90, score.getCount());
 
-        OverarchingViewmodel.addScore("testScore");
+        OverarchingViewmodel.addScore();
         assertEquals(100, score.getCount());
     }
 

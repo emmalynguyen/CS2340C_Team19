@@ -8,17 +8,17 @@ public class Score {
     private static MutableLiveData<Integer> count = new MutableLiveData<>();
 
     private Score() {
-        this.count.setValue(100);
+        this.count.postValue(300);
     }
 
-    public static Score getScore(){
-        if(score == null) {
+    public static Score getScore() {
+        if (score == null) {
             score = new Score();
         }
         return score;
     }
 
-    public int getCount(){
+    public int getCount() {
         return count.getValue();
     }
 
@@ -27,11 +27,11 @@ public class Score {
     }
 
     public int decrement(int decrement) {
-        count.setValue(count.getValue()-decrement);
+        count.setValue(count.getValue() - decrement);
         return count.getValue();
     }
 
-    public void resetCount(){
+    public void resetCount() {
         setCount(100);
     }
 

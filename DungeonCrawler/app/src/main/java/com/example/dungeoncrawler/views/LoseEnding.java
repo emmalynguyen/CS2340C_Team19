@@ -11,7 +11,7 @@ import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
 
-public class Ending extends AppCompatActivity {
+public class LoseEnding extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,9 @@ public class Ending extends AppCompatActivity {
 
         TextView currentScoreText = findViewById(R.id.currentScore);
         currentScoreText.setText(OverarchingViewmodel.getPlayerName()
-                + "\n" + OverarchingViewmodel.getScore().getValue());
+                + "\n0");
         TextView currentScoreDate = findViewById(R.id.currentDate);
-        currentScoreDate.setText("Congrats on winning!\n" + OverarchingViewmodel.getDate());
+        currentScoreDate.setText("You Lose!\n" + OverarchingViewmodel.getDate());
 
         TextView scoreText2 = findViewById(R.id.scoreText2);
         scoreText2.setText(names[1] + "\n" + scores[1]);
@@ -58,7 +58,7 @@ public class Ending extends AppCompatActivity {
 
         Button restartButton = findViewById(R.id.restartButton);
         restartButton.setOnClickListener(v -> {
-            OverarchingViewmodel.sceneToConfig(Ending.this, InitialConfiguration.class);
+            OverarchingViewmodel.sceneToConfig(LoseEnding.this, InitialConfiguration.class);
         });
     }
 }

@@ -1,6 +1,5 @@
 package com.example.dungeoncrawler.models;
 
-import android.util.Log;
 
 public class Leaderboard {
 
@@ -26,15 +25,15 @@ public class Leaderboard {
         return leaderboard;
     }
 
-    public void addScore(String name, int score, String date){
-        for(int i = 5; i >= 0; i--) {
+    public void addScore(String name, int score, String date) {
+        for (int i = 5; i >= 0; i--) {
             if (score < scores[i]) {
                 for (int j = 5; j > i + 1; j--) {
                     scores[j] = scores[j - 1];
                     names[j] = names[j - 1];
                     dates[j] = dates[j - 1];
                 }
-                if(i < 5) {
+                if (i < 5) {
                     scores[i + 1] = score;
                     names[i + 1] = name;
                     dates[i + 1] = date;
@@ -44,9 +43,9 @@ public class Leaderboard {
         }
     }
 
-    public void clear(){
+    public void clear() {
         leaderboard = new Leaderboard();
-        for(int i = 1; i < 6; i++) {
+        for (int i = 1; i < 6; i++) {
             scores[i] = 0;
             names[i] = null;
             dates[i] = null;

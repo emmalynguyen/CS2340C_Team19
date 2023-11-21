@@ -1,8 +1,5 @@
 package com.example.dungeoncrawler.models;
 
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.Subject;
@@ -23,8 +20,6 @@ public class Player implements Subject {
 
     private int sprite;
     private ArrayList<Observer> observers;
-    private int x; // X-coordinate of the player's position
-    private int y; // Y-coordinate of the player's position
 
     private Player() {
         health = 100;
@@ -83,6 +78,7 @@ public class Player implements Subject {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+
     public int getX() {
         return x;
     }
@@ -115,22 +111,15 @@ public class Player implements Subject {
         this.sprite = sprite;
     }
 
-    public int getX() {
-        return x;
-    }
 
     public void setX(int x) {
         this.x = x;
-        notifyObservers();
-    }
-
-    public int getY() {
-        return y;
+//        notifyObservers();
     }
 
     public void setY(int y) {
         this.y = y;
-        notifyObservers();
+//        notifyObservers();
     }
 
     @Override
