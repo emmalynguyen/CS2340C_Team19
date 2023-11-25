@@ -2,7 +2,6 @@ package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -29,15 +28,15 @@ public class InitialConfiguration extends AppCompatActivity {
             String difficultyLevel;
             int health;
 
-            if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
-                difficultyLevel ="Hard";
+            if (difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioHard) {
+                difficultyLevel = "Hard";
                 difficulty = 3;
                 health = 50;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioMedium) {
+            } else if (difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioMedium) {
                 difficultyLevel = "Medium";
                 difficulty = 2;
                 health = 75;
-            } else if(difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
+            } else if (difficultyRadioGroup.getCheckedRadioButtonId() == R.id.radioEasy) {
                 difficultyLevel = "Easy";
                 difficulty = 1;
                 health = 100;
@@ -58,7 +57,8 @@ public class InitialConfiguration extends AppCompatActivity {
 
             String username;
             EditText inputBox = findViewById(R.id.inputText);
-            if (inputBox.getText().toString().equals("") || inputBox.getText().toString().trim().equals("")) {
+            if (inputBox.getText().toString().equals("")
+                    || inputBox.getText().toString().trim().equals("")) {
                 return;
             }
             username = inputBox.getText().toString();
@@ -68,17 +68,8 @@ public class InitialConfiguration extends AppCompatActivity {
             OverarchingViewmodel.setPlayerHealth(health);
             OverarchingViewmodel.setPlayerName(username);
 
-            if (difficulty == 1) {
-                Intent gameEasy = new Intent(InitialConfiguration.this, GameSceneEasy.class);
-                startActivity(gameEasy);
-            } else if (difficulty == 2) {
-                Intent gameMedium = new Intent(InitialConfiguration.this, GameSceneMedium.class);
-                startActivity(gameMedium);
-            } else if (difficulty == 3) {
-                Intent gameHard = new Intent(InitialConfiguration.this, GameSceneHard.class);
-                startActivity(gameHard);
-            }
-            finish();
+
+            OverarchingViewmodel.sceneToRoom(InitialConfiguration.this, GameSceneEasy.class);
         });
     }
 }

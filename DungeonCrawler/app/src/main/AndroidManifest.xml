@@ -17,6 +17,10 @@
             android:screenOrientation="landscape"
             android:exported="false" />
         <activity
+            android:name=".views.LoseEnding"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
             android:name=".views.GameSceneEasy"
             android:screenOrientation="landscape"
             android:exported="false" />

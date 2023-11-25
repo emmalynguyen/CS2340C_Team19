@@ -22,12 +22,12 @@ public class ExampleUnitTest {
 
     }
     @Test
-    public void checkDecrement(){
+    public void checkDecrement() {
         Score s = Score.getScore();
         assertEquals("Expected health to be 99", 99, s.decrement(1));
     }
     @Test
-    public void checkDecreaseScore(){
+    public void checkDecreaseScore() {
         OverarchingViewmodel m = new OverarchingViewmodel();
         assertEquals("Expected health to be 95", 95, m.decreaseScore(5));
     }
