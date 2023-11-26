@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7ac01d-49c8-484e-9812-62eb4c63b5bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/dungeoncrawler/Sprint5Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/dungeoncrawler/Sprint5Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
