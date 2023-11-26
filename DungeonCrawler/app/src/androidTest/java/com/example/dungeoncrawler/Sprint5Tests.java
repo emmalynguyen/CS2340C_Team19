@@ -20,4 +20,14 @@ public class Sprint5Tests {
         //should be an instance of fire
         assertTrue(enemy instanceof FireEnemy);
     }
+
+    @Test
+    public void checkInitialStateEarthEnemy() {
+        //create the enemy
+        Enemy enemy = OverarchingViewmodel.createEnemy("earth");
+        // try to set it to fire
+        //should be an instance of fire
+        assertTrue(enemy.getSpeed() == 20);
+    }
+    
 }
