@@ -26,7 +26,7 @@ import com.example.dungeoncrawler.models.PowerUp;
             this.powerUp = powerUp;
             this.imageView = new ImageView(context);
             // Initialize imageView with the image for the power-up
-            imageView.setImageResource(R.drawable.female_dwarf); // Replace with the actual image resource
+            imageView.setImageResource(R.drawable.health_powerup); // Replace with the actual image resource
             // Set the scale type to FIT_START
             imageView.setScaleType(ImageView.ScaleType.FIT_START);
 
