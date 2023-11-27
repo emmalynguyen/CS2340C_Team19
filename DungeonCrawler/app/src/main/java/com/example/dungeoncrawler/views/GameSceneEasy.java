@@ -1,6 +1,8 @@
 package com.example.dungeoncrawler.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.os.Debug;
 import android.util.Log;
@@ -14,9 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Enemy;
+import com.example.dungeoncrawler.models.HealthPowerUp;
+import com.example.dungeoncrawler.models.PowerUp;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -29,6 +34,8 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_easy);
+
+        setPowerUpVisualization();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -72,6 +79,42 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         OverarchingViewmodel.addEnemy(airEnemy);
         OverarchingViewmodel.addEnemy(fireEnemy);
         update();
+    }
+
+    private void setPowerUpVisualization() {
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
+
+        // Create a ConstraintSet to dynamically set constraints
+        ConstraintSet constraintSet = new ConstraintSet();
+
+        // Iterate over your power-ups and create visualizations
+        int numberOfPowerUps = 1;
+        for (int i = 0; i < numberOfPowerUps; i++) {
+            // Create the power-up visualization
+            com.example.dungeoncrawler.views.PowerUpVisualization powerUpVisualization;
+            PowerUp powerUp = new HealthPowerUp();
+            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, powerUp);
+
+            // Add constraints for the power-up visualization
+            constraintSet.clone(constraintLayout);
+            constraintSet.connect((int) powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+            constraintSet.connect((int) powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+
+            // Set margins or paddings as needed
+            int margin = 100;// Set your desired margin
+                    constraintSet.setMargin((int) powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, margin);
+            constraintSet.setMargin((int) powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, margin);
+
+            // Apply constraints
+            constraintSet.applyTo(constraintLayout);
+
+            // Display the power-up visualization
+            powerUpVisualization.display(view -> {
+                // Handle click event
+                // You can add logic here to apply the power-up or perform other actions
+                Toast.makeText(this, "Power-up clicked!", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
 
