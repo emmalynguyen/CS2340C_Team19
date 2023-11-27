@@ -21,7 +21,17 @@ public class AndroidPowerUpVisualization implements com.example.dungeoncrawler.v
         this.powerUp = powerUp;
         this.imageView = new ImageView(context);
         // Initialize imageView with the image for the power-up
-        imageView.setImageResource(R.drawable.female_dwarf); // Replace with the actual image resource
+        imageView.setImageResource(R.drawable.health_powerup); // Replace with the actual image resource
+        // Set the scale type to FIT_START
+        imageView.setScaleType(ImageView.ScaleType.FIT_START);
+
+        // Set layout parameters to control the size
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
+                150, // or specify a fixed size in pixels
+                150
+        );
+        imageView.setLayoutParams(params);
+
         imageView.setOnClickListener(view -> {
             powerUp.applyPowerUp(Player.getPlayer()); // Apply the power-up when clicked
             hide();

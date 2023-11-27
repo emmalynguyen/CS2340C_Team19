@@ -97,12 +97,12 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 
             // Add constraints for the power-up visualization
             constraintSet.clone(constraintLayout);
-            constraintSet.connect((int) powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+            constraintSet.connect((int) powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
             constraintSet.connect((int) powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
 
             // Set margins or paddings as needed
             int margin = 100;// Set your desired margin
-                    constraintSet.setMargin((int) powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, margin);
+                    constraintSet.setMargin((int) powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
             constraintSet.setMargin((int) powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, margin);
 
             // Apply constraints
@@ -112,7 +112,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
             powerUpVisualization.display(view -> {
                 // Handle click event
                 // You can add logic here to apply the power-up or perform other actions
-                Toast.makeText(this, "Power-up clicked!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Health Power-up clicked!", Toast.LENGTH_SHORT).show();
             });
         }
     }
