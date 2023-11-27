@@ -118,6 +118,11 @@ public class OverarchingViewmodel {
         player.notifyObservers();
     }
 
+    private static void scoreOnAttack() {
+        increaseScore(2);
+        player.notifyObservers();
+    }
+
     public static boolean inBoundEasy() {
         return false;
     }
