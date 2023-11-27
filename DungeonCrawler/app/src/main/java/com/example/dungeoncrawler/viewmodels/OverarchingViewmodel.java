@@ -55,6 +55,10 @@ public class OverarchingViewmodel {
 
     }
 
+    public static int increaseScore(int increase) {
+        return score.increment(increase);
+    }
+
     private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
         enemies = new ArrayList<>();
