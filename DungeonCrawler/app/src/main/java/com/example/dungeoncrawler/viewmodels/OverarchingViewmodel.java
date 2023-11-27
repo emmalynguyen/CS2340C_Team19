@@ -112,6 +112,12 @@ public class OverarchingViewmodel {
             }
         }.start();
     }
+
+    private static void scoreOnEnemyDeath() {
+        increaseScore(3);
+        player.notifyObservers();
+    }
+
     public static boolean inBoundEasy() {
         return false;
     }
