@@ -2,7 +2,6 @@ package com.example.dungeoncrawler.models;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.Observer;
-import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.viewmodels.Subject;
 
 import java.util.ArrayList;
