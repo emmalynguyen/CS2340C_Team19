@@ -96,9 +96,9 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
         int previousPowerUpId = ConstraintSet.PARENT_ID;
             // Create the power-up visualization
-            PowerUp powerUp = new TeleportationPowerUp();
+            PowerUp powerUp = new HealthPowerUp();
             AndroidPowerUpVisualization powerUpVisualization;
-            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.female_dwarf, 150, 150);
+            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
 
             // Add constraints for the power-up visualization
             constraintSet.clone(constraintLayout);
