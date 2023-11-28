@@ -29,5 +29,12 @@ public class Sprint5Tests {
         //should be an instance of fire
         assertTrue(enemy.getSpeed() == 20);
     }
-    
+
+
+    /**@Test
+    public void checkScoreDecrementing() {
+    int score =  OverarchingViewmodel.decreaseScore(100000);
+    assertEquals(0, score);
+    }
+     **/
 }
