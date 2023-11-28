@@ -1,6 +1,5 @@
 package com.example.dungeoncrawler.models;
 
-
 public interface PlayerMovement {
     void move(int step, int level, int speed);
     boolean canMove(int level);

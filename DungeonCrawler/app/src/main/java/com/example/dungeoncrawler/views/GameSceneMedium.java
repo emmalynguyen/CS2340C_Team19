@@ -79,7 +79,7 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
 
         ArrayList<Enemy> enemies = OverarchingViewmodel.getEnemies();
 
-        if(enemies.size() >= 3){
+        if (enemies.size() >= 3) {
             ImageView monsterView = findViewById(R.id.monsterView);
             monsterView.setImageResource(enemies.get(0).getSprite());
             monsterView.setX(enemies.get(0).getX());
@@ -92,9 +92,7 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
             monsterView3.setImageResource(enemies.get(2).getSprite());
             monsterView3.setX(enemies.get(2).getX());
             monsterView3.setY(enemies.get(2).getY());
-
         }
-
 
         if (OverarchingViewmodel.getPlayerY() >= 650) {
             OverarchingViewmodel.removeObserver(this);
@@ -102,12 +100,13 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         }
 
         for (Enemy enemy : enemies) {
-            if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
+            if (enemy.checkCollision(OverarchingViewmodel.getPlayerX(),
+                    OverarchingViewmodel.getPlayerY())) {
                 OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
             }
         }
 
-        if(OverarchingViewmodel.getCount() <= 0) {
+        if (OverarchingViewmodel.getCount() <= 0) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneToLeaderboard(GameSceneMedium.this, LoseEnding.class);
         }
@@ -118,5 +117,4 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         OverarchingViewmodel.keyDown(keyCode);
         return super.onKeyDown(keyCode, event);
     }
-
 }

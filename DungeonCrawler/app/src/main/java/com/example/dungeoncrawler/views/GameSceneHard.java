@@ -79,7 +79,7 @@ public class GameSceneHard extends AppCompatActivity implements Observer {
 
         ArrayList<Enemy> enemies = OverarchingViewmodel.getEnemies();
 
-        if(enemies.size() >= 3){
+        if (enemies.size() >= 3) {
             ImageView monsterView = findViewById(R.id.monsterView);
             monsterView.setImageResource(enemies.get(0).getSprite());
             monsterView.setX(enemies.get(0).getX());
@@ -101,12 +101,13 @@ public class GameSceneHard extends AppCompatActivity implements Observer {
         }
 
         for (Enemy enemy : enemies) {
-            if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
+            if (enemy.checkCollision(OverarchingViewmodel.getPlayerX(),
+                    OverarchingViewmodel.getPlayerY())) {
                 OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
             }
         }
 
-        if(OverarchingViewmodel.getCount() <= 0) {
+        if (OverarchingViewmodel.getCount() <= 0) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneToLeaderboard(GameSceneHard.this, LoseEnding.class);
         }

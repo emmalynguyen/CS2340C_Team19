@@ -1,6 +1,5 @@
 package com.example.dungeoncrawler.models;
 
-
 public class Leaderboard {
 
     //singleton instance
@@ -55,7 +54,6 @@ public class Leaderboard {
     public int[] getScores() {
         return scores;
     }
-
     public String[] getNames() {
         return names;
     }

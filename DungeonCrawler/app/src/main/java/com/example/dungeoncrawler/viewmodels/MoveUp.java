@@ -14,16 +14,15 @@ public class MoveUp implements PlayerMovement {
     @Override
     public boolean canMove(int level) {
         switch (level) {
-            case (1):
-                return canMoveMap1();
-            case (2):
-                return canMoveMap2();
-            case (3):
-                return canMoveMap3();
-            default:
-                return false;
+        case (1):
+            return canMoveMap1();
+        case (2):
+            return canMoveMap2();
+        case (3):
+            return canMoveMap3();
+        default:
+            return false;
         }
-
     }
     @Override
     public boolean canMoveMap1() {
@@ -42,10 +41,11 @@ public class MoveUp implements PlayerMovement {
     @Override
     public boolean canMoveMap2() {
         if (OverarchingViewmodel.getPlayerY() <= 150
-                && (OverarchingViewmodel.getPlayerX() <= 900 || OverarchingViewmodel.getPlayerX() >= 1200)){
+                && (OverarchingViewmodel.getPlayerX() <= 900
+                || OverarchingViewmodel.getPlayerX() >= 1200)) {
             return false;
         }
-        return canMoveMap1() && true;
+        return canMoveMap1();
     }
 
     @Override

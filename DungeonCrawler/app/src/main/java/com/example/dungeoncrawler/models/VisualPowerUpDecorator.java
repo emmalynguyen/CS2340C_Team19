@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.dungeoncrawler.views.PowerUpVisualization;
 
 
-public class VisualPowerUpDecorator implements PowerUp{
+public class VisualPowerUpDecorator implements PowerUp {
     private PowerUp powerUp;
     private PowerUpVisualization powerUpVisualization;
 
