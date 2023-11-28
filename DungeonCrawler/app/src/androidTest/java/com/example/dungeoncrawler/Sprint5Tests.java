@@ -29,4 +29,5 @@ public class Sprint5Tests {
         //should be an instance of fire
         assertTrue(enemy.getSpeed() == 20);
     }
+
 }
