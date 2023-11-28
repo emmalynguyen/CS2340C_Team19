@@ -19,4 +19,5 @@ public interface Enemy {
     int getSpeed();
 
     void setSpeed(int speed);
+    void kill();
 }

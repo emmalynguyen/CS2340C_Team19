@@ -202,6 +202,7 @@ public class OverarchingViewmodel {
     }
     public static void keyDown(int keyCode) {
         PlayerMovement playerMovement = null;
+        player.setFire(false);
         int step = 10;
         switch (keyCode) {
         case KeyEvent.KEYCODE_DPAD_UP:
@@ -223,6 +224,9 @@ public class OverarchingViewmodel {
             MoveRight moveRight = new MoveRight();
             OverarchingViewmodel.setMovementStrategy(moveRight);
             move(step);
+            break;
+        case KeyEvent.KEYCODE_SPACE:
+            player.setFire(true);
             break;
         default:
             break;
@@ -273,5 +277,11 @@ public class OverarchingViewmodel {
 
     public static int getLevel() {
         return level;
+    }
+    public static boolean isOnFire(){
+        return player.isFire();
+    }
+    public static int getFireSprite(){
+        return player.getFireSprite();
     }
 }
