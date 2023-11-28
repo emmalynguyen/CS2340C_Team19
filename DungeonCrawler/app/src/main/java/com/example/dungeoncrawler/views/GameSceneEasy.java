@@ -12,18 +12,11 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Enemy;
-import com.example.dungeoncrawler.models.HealthPowerUp;
-import com.example.dungeoncrawler.models.PowerUp;
-import com.example.dungeoncrawler.models.SpeedPowerUp;
-import com.example.dungeoncrawler.models.TeleportationPowerUp;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -37,7 +30,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_easy);
 
-        setPowerUpVisualization();
+//        setPowerUpVisualization();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -69,6 +62,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         OverarchingViewmodel.getScore().observe(this, value -> scoreText.setText("Score: "
                 + value + "\nRoom 1"));
 
+
         Enemy airEnemy = OverarchingViewmodel.createEnemy("air");
         Enemy fireEnemy = OverarchingViewmodel.createEnemy("fire");
 
@@ -83,85 +77,155 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         update();
     }
 
-    private void setPowerUpVisualization() {
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
+//    private void setPowerUpVisualization() {
+//        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
+//
+//
+//        // Create a ConstraintSet to dynamically set constraints
+//        ConstraintSet constraintSet = new ConstraintSet();
+//
+//
+//        // Iterate over your power-ups and create visualizations
+//        int numberOfPowerUps = 3;
+//        int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
+//        int previousPowerUpId = ConstraintSet.PARENT_ID;
+//            // Create the power-up visualization
+//            PowerUp powerUp = new HealthPowerUp();
+//            AndroidPowerUpVisualization powerUpVisualization;
+//            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
+//
+//            // Add constraints for the power-up visualization
+//            constraintSet.clone(constraintLayout);
+//            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
+//            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+//
+//            // Set margins or paddings as needed
+//            int margin = 100 + 0 * marginBetweenPowerUps;; // Set your desired margin
+//            constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+//
+//            // Apply constraints
+//            constraintSet.applyTo(constraintLayout);
+//
+//            previousPowerUpId = powerUpVisualization.getImageView().getId();
+//
+//            // Display the power-up visualization
+//            powerUpVisualization.display(view -> {
+//                // Handle click event
+//                // You can add logic here to apply the power-up or perform other actions
+//                Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+//            });
+//
+//            //teleportation powerup
+//        /*powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+//
+//        // Add constraints for the power-up visualization
+//        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
+//        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+//
+//        // Set margins or paddings as needed
+//        margin = 100 + 1 * marginBetweenPowerUps;; // Set your desired margin
+//        constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+//
+//        // Apply constraints
+//        constraintSet.applyTo(constraintLayout);
+//
+//        previousPowerUpId = powerUpVisualization.getImageView().getId();
+//
+//        // Display the power-up visualization
+//        powerUpVisualization.display(view -> {
+//            // Handle click event
+//            // You can add logic here to apply the power-up or perform other actions
+//            Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+//        });
+//
+//         */
 
 
+//<<<<<<< Updated upstream
         // Create a ConstraintSet to dynamically set constraints
-        ConstraintSet constraintSet = new ConstraintSet();
-
-
-        // Iterate over your power-ups and create visualizations
-        int numberOfPowerUps = 3;
-        int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
-        int previousPowerUpId = ConstraintSet.PARENT_ID;
-            // Create the power-up visualization
-            PowerUp powerUp = new HealthPowerUp();
-            AndroidPowerUpVisualization powerUpVisualization;
-            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
-
-            // Add constraints for the power-up visualization
-            constraintSet.clone(constraintLayout);
-            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
-            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
-
-            // Set margins or paddings as needed
-            int margin = 100 + 0 * marginBetweenPowerUps;; // Set your desired margin
-            constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
-
-            // Apply constraints
-            constraintSet.applyTo(constraintLayout);
-
-            previousPowerUpId = powerUpVisualization.getImageView().getId();
-
-            // Display the power-up visualization
-            powerUpVisualization.display(view -> {
-                // Handle click event
-                // You can add logic here to apply the power-up or perform other actions
-                Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
-            });
-
-            //teleportation powerup
-        /*powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
-        PowerUp powerUp1 = new TeleportationPowerUp();
-        powerUpVisualization.display(view -> {
-            // Handle click event
-            // You can add logic here to apply the power-up or perform other actions
-            Toast.makeText(this, powerUp1.getName() + " clicked!", Toast.LENGTH_SHORT).show();
-        });
-
-        // Add constraints for the power-up visualization
-        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, previousPowerUpId, ConstraintSet.TOP);
-        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
-
-        // Set margins or paddings as needed
-        margin = 100 + 1 * marginBetweenPowerUps;; // Set your desired margin
-        constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
-
-        // Apply constraints
-        constraintSet.applyTo(constraintLayout);
-
-        previousPowerUpId = powerUpVisualization.getImageView().getId();
-
-        // Display the power-up visualization
-        powerUpVisualization.display(view -> {
-            // Handle click event
-            // You can add logic here to apply the power-up or perform other actions
-            Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
-        });
-
-         */
-
-
-    }
+//        ConstraintSet constraintSet = new ConstraintSet();
+//
+//
+//        // Iterate over your power-ups and create visualizations
+//        int numberOfPowerUps = 3;
+//        int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
+//        int previousPowerUpId = ConstraintSet.PARENT_ID;
+//            // Create the power-up visualization
+//            PowerUp powerUp = new HealthPowerUp();
+//            AndroidPowerUpVisualization powerUpVisualization;
+//            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
+//
+//            // Add constraints for the power-up visualization
+//            constraintSet.clone(constraintLayout);
+//            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
+//            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+//
+//            // Set margins or paddings as needed
+//            int margin = 100 + 0 * marginBetweenPowerUps;; // Set your desired margin
+//            constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+//
+//            // Apply constraints
+//            constraintSet.applyTo(constraintLayout);
+//
+//            previousPowerUpId = powerUpVisualization.getImageView().getId();
+//
+//            // Display the power-up visualization
+//            powerUpVisualization.display(view -> {
+//                // Handle click event
+//                // You can add logic here to apply the power-up or perform other actions
+//                Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+//            });
+//
+//            //teleportation powerup
+//        /*powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+//        PowerUp powerUp1 = new TeleportationPowerUp();
+//        powerUpVisualization.display(view -> {
+//            // Handle click event
+//            // You can add logic here to apply the power-up or perform other actions
+//            Toast.makeText(this, powerUp1.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+//        });
+//
+//        // Add constraints for the power-up visualization
+//        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, previousPowerUpId, ConstraintSet.TOP);
+//        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+//
+//        // Set margins or paddings as needed
+//        margin = 100 + 1 * marginBetweenPowerUps;; // Set your desired margin
+//        constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+//
+//        // Apply constraints
+//        constraintSet.applyTo(constraintLayout);
+//
+//        previousPowerUpId = powerUpVisualization.getImageView().getId();
+//
+//        // Display the power-up visualization
+//        powerUpVisualization.display(view -> {
+//            // Handle click event
+//            // You can add logic here to apply the power-up or perform other actions
+//            Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+//        });
+//
+//         */
+//
+//
+//    }
+//=======
+////    }
+//>>>>>>> Stashed changes
 
 
 
     @Override
     public void update() {
+
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
+        if(OverarchingViewmodel.isOnFire()) {
+            spriteView.setImageResource(OverarchingViewmodel.getFireSprite());
+        } else {
+            spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
+        }
 
         ArrayList<Enemy> enemies = OverarchingViewmodel.getEnemies();
 
@@ -183,7 +247,11 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         }
         for (Enemy enemy : enemies) {
             if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
-                OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
+                if(OverarchingViewmodel.isOnFire()){
+                    enemy.kill();
+                } else {
+                    OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
+                }
             }
         }
 
@@ -193,6 +261,10 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         }
     }
 
+    public void hidePowerUp(){
+        ImageView healthPowerUp = findViewById(R.id.healthPowerUp);
+        healthPowerUp.setY(10000);
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         OverarchingViewmodel.keyDown(keyCode);
