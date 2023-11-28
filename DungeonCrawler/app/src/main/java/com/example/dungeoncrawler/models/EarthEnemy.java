@@ -2,6 +2,7 @@ package com.example.dungeoncrawler.models;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.Observer;
+import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.viewmodels.Subject;
 
 import java.util.ArrayList;
@@ -50,6 +51,10 @@ public class EarthEnemy implements Enemy, Subject {
             return true;
         }
         return false;
+    }
+    public void kill(){
+        OverarchingViewmodel.increaseScore(25 * OverarchingViewmodel.getPlayerDifficulty());
+        setX(999999);
     }
 
     public int getX() {

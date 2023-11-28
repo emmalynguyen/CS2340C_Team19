@@ -1,6 +1,7 @@
 package com.example.dungeoncrawler.models;
 
 
+import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.Subject;
 
@@ -11,6 +12,7 @@ public class Player implements Subject {
     private static Player player;
     private int health;
     private String name;
+    private boolean isFire;
 
     private int x;
     private int y;
@@ -20,6 +22,7 @@ public class Player implements Subject {
 
     private int sprite;
     private int speed;
+    private int fireSprite;
     private ArrayList<Observer> observers;
 
     private Player() {
@@ -32,6 +35,8 @@ public class Player implements Subject {
         x = 0; // Initial X-coordinate
         y = 0; // Initial Y-coordinate
         speed = 1;
+        isFire = false;
+        fireSprite = R.drawable.fire;
     }
 
     public static Player getPlayer() {
@@ -129,6 +134,18 @@ public class Player implements Subject {
     public void setY(int y) {
         this.y = y;
 //        notifyObservers();
+    }
+
+    public boolean isFire() {
+        return isFire;
+    }
+
+    public void setFire(boolean fire) {
+        isFire = fire;
+    }
+
+    public int getFireSprite() {
+        return fireSprite;
     }
 
     @Override
