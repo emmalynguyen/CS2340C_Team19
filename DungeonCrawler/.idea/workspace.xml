@@ -11,9 +11,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7ac01d-49c8-484e-9812-62eb4c63b5bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/dungeoncrawler/Sprint5Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/dungeoncrawler/Sprint5Tests.java" afterDir="false" />
-    </list>
+    <list default="true" id="aa7ac01d-49c8-484e-9812-62eb4c63b5bd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

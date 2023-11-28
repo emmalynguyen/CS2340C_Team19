@@ -6,6 +6,7 @@ import com.example.dungeoncrawler.models.AirEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.FireEnemy;
 import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.models.SpeedPowerUp;
 import com.example.dungeoncrawler.models.TeleportationPowerUp;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.models.HealthPowerUp;
@@ -124,5 +125,20 @@ public class Sprint5Tests {
 
         assertTrue(teleportationPowerUp.getName().equals("Teleportation Power-Up"));
     }
-    
+
+    @Test
+    public void checkSpeedIncrease() {
+
+        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+        int initialSpeed = newPlayer.getSpeed();
+
+        // Applying the speed power-up
+        SpeedPowerUp speedPowerUp = new SpeedPowerUp();
+        speedPowerUp.applyPowerUp(newPlayer);
+
+        // Asserting that the speed has increased by the expected amount (1 in this case)
+        Assert.assertEquals("Speed should increase by 1 after applying SpeedPowerUp",
+                initialSpeed + 1, newPlayer.getSpeed());
+    }
+
 }
