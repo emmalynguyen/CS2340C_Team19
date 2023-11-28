@@ -126,6 +126,7 @@ public class Sprint5Tests {
         assertTrue(teleportationPowerUp.getName().equals("Teleportation Power-Up"));
     }
 
+    //Tanavi's Junits
     @Test
     public void checkSpeedIncrease() {
 
@@ -140,5 +141,17 @@ public class Sprint5Tests {
         Assert.assertEquals("Speed should increase by 1 after applying SpeedPowerUp",
                 initialSpeed + 1, newPlayer.getSpeed());
     }
+
+    @Test
+    public void checkSpeedPowerUpName() {
+        // Creating an instance of SpeedPowerUp
+        SpeedPowerUp speedPowerUp = new SpeedPowerUp();
+
+        // Asserting that the getName method returns the correct name
+        Assert.assertEquals("The name of the power-up should be 'Speed Power-Up'",
+                "Speed Power-Up", speedPowerUp.getName());
+    }
+
+    //Emmaly's Junits
 
 }
