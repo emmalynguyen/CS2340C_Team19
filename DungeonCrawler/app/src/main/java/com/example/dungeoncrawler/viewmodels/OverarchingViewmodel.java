@@ -197,7 +197,7 @@ public class OverarchingViewmodel {
         playerMovement = newPlayerMovement;
     }
     public static void move(int step) {
-        playerMovement.move(step, level);
+        playerMovement.move(step, level, player.getSpeed());
         player.notifyObservers();
     }
     public static void keyDown(int keyCode) {

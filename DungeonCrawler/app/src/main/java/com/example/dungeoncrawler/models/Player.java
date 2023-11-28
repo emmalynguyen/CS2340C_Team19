@@ -19,6 +19,7 @@ public class Player implements Subject {
     private int difficulty;
 
     private int sprite;
+    private int speed;
     private ArrayList<Observer> observers;
 
     private Player() {
@@ -30,6 +31,7 @@ public class Player implements Subject {
         observers = new ArrayList<>();
         x = 0; // Initial X-coordinate
         y = 0; // Initial Y-coordinate
+        speed = 1;
     }
 
     public static Player getPlayer() {
@@ -110,6 +112,13 @@ public class Player implements Subject {
     public void setSprite(int sprite) {
         this.sprite = sprite;
     }
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int newSpeed) {
+        this.speed = newSpeed;
+    }
 
 
     public void setX(int x) {
@@ -139,4 +148,5 @@ public class Player implements Subject {
             observer.update();
         }
     }
+
 }
