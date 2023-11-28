@@ -5,7 +5,6 @@ package com.example.dungeoncrawler.models;
 
 import android.view.View;
 
-
 import com.example.dungeoncrawler.views.PowerUpVisualization;
 
 
