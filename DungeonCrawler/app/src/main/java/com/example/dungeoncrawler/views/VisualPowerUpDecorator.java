@@ -1,19 +1,21 @@
-package com.example.dungeoncrawler.models;
+package com.example.dungeoncrawler.views;
 
 
 
 
 import android.view.View;
 
-import com.example.dungeoncrawler.views.PowerUpVisualization;
+import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.models.PowerUp;
 
 
-public class VisualPowerUpDecorator implements PowerUp{
+
+public class VisualPowerUpDecorator implements PowerUp {
     private PowerUp powerUp;
-    private PowerUpVisualization powerUpVisualization;
+    private AndroidPowerUpVisualization powerUpVisualization;
 
 
-    public VisualPowerUpDecorator(PowerUp powerUp, PowerUpVisualization powerUpVisualization) {
+    public VisualPowerUpDecorator(PowerUp powerUp, AndroidPowerUpVisualization powerUpVisualization) {
         this.powerUp = powerUp;
         this.powerUpVisualization = powerUpVisualization;
     }

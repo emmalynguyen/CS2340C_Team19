@@ -96,9 +96,9 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
         int previousPowerUpId = ConstraintSet.PARENT_ID;
             // Create the power-up visualization
-            PowerUp powerUp = new TeleportationPowerUp();
+            PowerUp powerUp = new HealthPowerUp();
             AndroidPowerUpVisualization powerUpVisualization;
-            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
 
             // Add constraints for the power-up visualization
             constraintSet.clone(constraintLayout);
@@ -123,10 +123,16 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 
             //teleportation powerup
         /*powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+        PowerUp powerUp1 = new TeleportationPowerUp();
+        powerUpVisualization.display(view -> {
+            // Handle click event
+            // You can add logic here to apply the power-up or perform other actions
+            Toast.makeText(this, powerUp1.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+        });
 
         // Add constraints for the power-up visualization
-        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
-        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, previousPowerUpId, ConstraintSet.TOP);
+        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
 
         // Set margins or paddings as needed
         margin = 100 + 1 * marginBetweenPowerUps;; // Set your desired margin
