@@ -33,6 +33,8 @@ public class Sprint5Tests {
         assertTrue(enemy instanceof FireEnemy);
     }
 
+
+
     @Test
     public void checkInitialStateEarthEnemy() {
         //create the enemy
@@ -41,6 +43,8 @@ public class Sprint5Tests {
         //should be an instance of fire
         assertTrue(enemy.getSpeed() == 20);
     }
+
+
 
     // Sneha's Sprint 5
     @Test
@@ -58,6 +62,8 @@ public class Sprint5Tests {
         // Asserting that the health has increased by the expected amount (10 in this case)
         assertTrue(initialHealth + 10 == newPlayer.getHealth());
     }
+
+
 
     @Test
     public void checkHealthPowerUpNameLog() {
@@ -79,7 +85,9 @@ public class Sprint5Tests {
     @Test
     public void checkTeleportationPowerUp() {
         // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
+
         Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+
         int initialX = newPlayer.getX();
         int initialY = newPlayer.getY();
 
@@ -90,12 +98,31 @@ public class Sprint5Tests {
         // Asserting that the player's position has changed to the expected coordinates
         Assert.assertNotEquals("Player's X-coordinate differs",
                 initialX, newPlayer.getX());
+
         Assert.assertNotEquals("Player's Y-coordinate differs",
                 initialY, newPlayer.getY());
+
         Assert.assertEquals("Player's X-coordinate 200",
                 200, newPlayer.getX());
+
         Assert.assertEquals("Player's Y-coordinate 150",
                 150, newPlayer.getY());
+    }
+
+    public void checkTeleportationPowerUpString(){
+        // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
+        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+
+        int initialX = newPlayer.getX();
+
+        int initialY = newPlayer.getY();
+
+        // Applying the teleportation power-up
+        TeleportationPowerUp teleportationPowerUp = new TeleportationPowerUp();
+
+        teleportationPowerUp.applyPowerUp(newPlayer);
+
+        assertTrue(teleportationPowerUp.getName().equals("Teleportation Power-Up"));
     }
     
 }
