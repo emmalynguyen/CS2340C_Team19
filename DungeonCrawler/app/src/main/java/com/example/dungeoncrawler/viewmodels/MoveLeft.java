@@ -5,9 +5,9 @@ import com.example.dungeoncrawler.models.PlayerMovement;
 
 public class MoveLeft implements PlayerMovement {
     @Override
-    public void move(int step, int level) {
+    public void move(int step, int level, int speed) {
         if (canMove(level)) {
-            OverarchingViewmodel.setPlayerX(OverarchingViewmodel.getPlayerX() - step);
+            OverarchingViewmodel.setPlayerX(OverarchingViewmodel.getPlayerX() - (step * speed));
         }
     }
 

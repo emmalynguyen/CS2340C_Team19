@@ -15,4 +15,8 @@ public interface Enemy {
     int getSprite();
 
     void setSprite(int sprite);
+
+    int getSpeed();
+
+    void setSpeed(int speed);
 }

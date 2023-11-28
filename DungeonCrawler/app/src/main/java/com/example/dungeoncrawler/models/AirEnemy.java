@@ -64,6 +64,10 @@ public class AirEnemy implements Enemy, Subject {
         this.sprite = sprite;
     }
 
+    public int getSpeed() { return speed; }
+
+    public void setSpeed(int speed) { this.speed = speed;}
+
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);

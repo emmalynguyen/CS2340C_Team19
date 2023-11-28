@@ -55,6 +55,10 @@ public class OverarchingViewmodel {
 
     }
 
+    public static int increaseScore(int increase) {
+        return score.increment(increase);
+    }
+
     private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
         enemies = new ArrayList<>();
@@ -108,6 +112,17 @@ public class OverarchingViewmodel {
             }
         }.start();
     }
+
+    private static void scoreOnEnemyDeath() {
+        increaseScore(3);
+        player.notifyObservers();
+    }
+
+    private static void scoreOnAttack() {
+        increaseScore(2);
+        player.notifyObservers();
+    }
+
     public static boolean inBoundEasy() {
         return false;
     }
@@ -117,6 +132,7 @@ public class OverarchingViewmodel {
     private static void resetScore() {
         score.setCount(300);
     }
+
 
     public static void setPlayerSprite(int sprite) {
         player.setDrawable(sprite);
@@ -181,7 +197,7 @@ public class OverarchingViewmodel {
         playerMovement = newPlayerMovement;
     }
     public static void move(int step) {
-        playerMovement.move(step, level);
+        playerMovement.move(step, level, player.getSpeed());
         player.notifyObservers();
     }
     public static void keyDown(int keyCode) {

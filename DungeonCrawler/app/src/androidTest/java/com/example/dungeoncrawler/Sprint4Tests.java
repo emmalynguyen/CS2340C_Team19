@@ -65,7 +65,7 @@ public class Sprint4Tests implements Observer {
     public void checkCreateEnemyWithInvalidType() {
         OverarchingViewmodel model = new OverarchingViewmodel();
         Enemy enemy = model.createEnemy("invalidType");
-
+        //TRYING TO SEE IF A PUSH WORKS SORRY
         assertNull(enemy);
     }
 

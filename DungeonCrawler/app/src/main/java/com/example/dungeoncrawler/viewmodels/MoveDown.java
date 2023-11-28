@@ -5,9 +5,9 @@ import com.example.dungeoncrawler.models.PlayerMovement;
 
 public class MoveDown implements PlayerMovement {
     @Override
-    public void move(int step, int level) {
+    public void move(int step, int level, int speed) {
         if (canMove(level)) {
-            OverarchingViewmodel.setPlayerY(OverarchingViewmodel.getPlayerY() + step);
+            OverarchingViewmodel.setPlayerY(OverarchingViewmodel.getPlayerY() + (step * speed));
         }
     }
 

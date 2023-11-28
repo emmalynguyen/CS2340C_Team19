@@ -30,6 +30,11 @@ public class Score {
         count.setValue(count.getValue() - decrement);
         return count.getValue();
     }
+    
+    public int increment(int increment) {
+        count.setValue(count.getValue() + increment);
+        return count.getValue();
+    }
 
     public void resetCount() {
         setCount(100);
