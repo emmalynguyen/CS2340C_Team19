@@ -2,7 +2,6 @@ package com.example.dungeoncrawler.models;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.viewmodels.Observer;
-import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.viewmodels.Subject;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class AirEnemy implements Enemy, Subject {
     }
 
     public boolean checkCollision(int x, int y){
-        if((this.y > y - 30 && this.y < y + 200)
+        if((this.y > y - 10 && this.y < y + 160)
               && (this.x > x - 20 && this.x < x + 150)) {
             return true;
         }

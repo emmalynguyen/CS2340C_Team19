@@ -55,6 +55,10 @@ public class OverarchingViewmodel {
 
     }
 
+    public static int increaseScore(int increase) {
+        return score.increment(increase);
+    }
+
     private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
         enemies = new ArrayList<>();
@@ -85,7 +89,7 @@ public class OverarchingViewmodel {
         resetScore();
     }
     public static void addScore() {
-        if(score.getCount() != 0) {
+        if (score.getCount() > 0) {
             String username = player.getName();
             String date = getDate();
             leaderboard.addScore(username, score.getCount(), date);
@@ -96,7 +100,8 @@ public class OverarchingViewmodel {
             @Override
             public void onTick(long l) {
                 decreaseScore(1);
-                for(Enemy enemy : enemies) {
+                player.notifyObservers();
+                for (Enemy enemy : enemies) {
                     enemy.move();
                 }
             }
@@ -107,6 +112,17 @@ public class OverarchingViewmodel {
             }
         }.start();
     }
+
+    private static void scoreOnEnemyDeath() {
+        increaseScore(3);
+        player.notifyObservers();
+    }
+
+    private static void scoreOnAttack() {
+        increaseScore(2);
+        player.notifyObservers();
+    }
+
     public static boolean inBoundEasy() {
         return false;
     }
@@ -181,7 +197,8 @@ public class OverarchingViewmodel {
         playerMovement = newPlayerMovement;
     }
     public static void move(int step) {
-        playerMovement.move(step, level);
+        playerMovement.move(step, level, player.getSpeed());
+        player.notifyObservers();
     }
     public static void keyDown(int keyCode) {
         PlayerMovement playerMovement = null;
@@ -214,19 +231,18 @@ public class OverarchingViewmodel {
 
     public static Enemy createEnemy(String enemyType) {
         Enemy enemy = null;
-        if(enemyType.equals("air")) {
+        if (enemyType.equals("air")) {
             enemy = new AirEnemy();
-        } else if(enemyType.equals("fire")) {
+        } else if (enemyType.equals("fire")) {
             enemy = new FireEnemy();
-        } else if(enemyType.equals("water")) {
+        } else if (enemyType.equals("water")) {
             enemy = new WaterEnemy();
-        }
-        else if(enemyType.equals("earth")) {
+        } else if (enemyType.equals("earth")) {
             enemy = new EarthEnemy();
         }
         return enemy;
     }
-    public static void addEnemy(Enemy enemy){
+    public static void addEnemy(Enemy enemy) {
         enemies.add(enemy);
     }
 
