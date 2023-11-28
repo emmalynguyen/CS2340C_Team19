@@ -46,7 +46,6 @@ public class Sprint5Tests {
     }
 
 
-
     // Sneha's Sprint 5
     @Test
     public void checkHealthPowerUp() {
