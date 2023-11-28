@@ -1,5 +1,6 @@
 package com.example.dungeoncrawler;
 
+import static android.view.KeyEvent.KEYCODE_SPACE;
 import static org.junit.Assert.assertTrue;
 
 import com.example.dungeoncrawler.models.AirEnemy;
@@ -81,13 +82,15 @@ public class Sprint5Tests {
         assertTrue(healthPowerUp.getName().equals("Health Power-Up"));
     }
 
-    //Cole's Junits
+    //Emmaly's Junits
     @Test
     public void checkTeleportationPowerUp() {
         // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
 
         Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
 
+        newPlayer.setX(5);
+        newPlayer.setY(5);
         int initialX = newPlayer.getX();
         int initialY = newPlayer.getY();
 
@@ -109,6 +112,7 @@ public class Sprint5Tests {
                 150, newPlayer.getY());
     }
 
+    @Test
     public void checkTeleportationPowerUpString(){
         // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
         Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
@@ -151,6 +155,16 @@ public class Sprint5Tests {
                 "Speed Power-Up", speedPowerUp.getName());
     }
 
-    //Emmaly's Junits
+    // Cole's Junits
+    @Test
+    public void checkOnFire(){
+        OverarchingViewmodel.keyDown(KEYCODE_SPACE);
+        Assert.assertTrue(OverarchingViewmodel.isOnFire());
+    }
+    @Test
+    public void checkOnFireRemove(){
+        OverarchingViewmodel.keyDown(12);
+        Assert.assertFalse(OverarchingViewmodel.isOnFire());
+    }
 
 }
