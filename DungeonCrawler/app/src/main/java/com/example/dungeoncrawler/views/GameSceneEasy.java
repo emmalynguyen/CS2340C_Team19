@@ -98,7 +98,7 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
             // Create the power-up visualization
             PowerUp powerUp = new TeleportationPowerUp();
             AndroidPowerUpVisualization powerUpVisualization;
-            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.female_dwarf, 150, 150);
 
             // Add constraints for the power-up visualization
             constraintSet.clone(constraintLayout);
