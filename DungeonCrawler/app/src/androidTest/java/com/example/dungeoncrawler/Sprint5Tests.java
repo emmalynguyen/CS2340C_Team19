@@ -9,9 +9,17 @@ import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.models.HealthPowerUp;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class Sprint5Tests {
+
+    private int observe;
+    @Before
+    public void setup() {
+        new OverarchingViewmodel();
+        observe = 0;
+    }
 
     //Parul's sprint 5 unit tests
     @Test
@@ -32,7 +40,7 @@ public class Sprint5Tests {
         assertTrue(enemy.getSpeed() == 20);
     }
 
-    // Tanavi's Sprint 5
+    // Sneha's Sprint 5
     @Test
     public void checkHealthPowerUp() {
         //first make a new player
@@ -48,5 +56,24 @@ public class Sprint5Tests {
         // Asserting that the health has increased by the expected amount (10 in this case)
         assertTrue(initialHealth + 10 == newPlayer.getHealth());
     }
+
+    @Test
+    public void checkHealthPowerUpNameLog() {
+        //first make a new player
+        //object will be tested
+        Player newPlayer = Player.getPlayer();
+        //initialize the health of the player originally
+        int initialHealth = newPlayer.getHealth();
+
+        // Applying the health power-up
+        HealthPowerUp healthPowerUp = new HealthPowerUp();
+        healthPowerUp.applyPowerUp(newPlayer);
+
+        // Asserting that the health has increased by the expected amount (10 in this case)
+        assertTrue(healthPowerUp.getName().equals("Health Power-Up"));
+    }
+
+    //Cole's Junits
+
     
 }
