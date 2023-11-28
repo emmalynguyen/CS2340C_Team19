@@ -5,7 +5,9 @@ import static org.junit.Assert.assertTrue;
 import com.example.dungeoncrawler.models.AirEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.FireEnemy;
+import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
+import com.example.dungeoncrawler.models.HealthPowerUp;
 
 import org.junit.Test;
 
@@ -28,6 +30,23 @@ public class Sprint5Tests {
         // try to set it to fire
         //should be an instance of fire
         assertTrue(enemy.getSpeed() == 20);
+    }
+
+    // Tanavi's Sprint 5
+    @Test
+    public void checkHealthPowerUp() {
+        //first make a new player
+        //object will be tested
+        Player newPlayer = Player.getPlayer();
+        //initialize the health of the player originally
+        int initialHealth = newPlayer.getHealth();
+
+        // Applying the health power-up
+        HealthPowerUp healthPowerUp = new HealthPowerUp();
+        healthPowerUp.applyPowerUp(newPlayer);
+
+        // Asserting that the health has increased by the expected amount (10 in this case)
+        assertTrue(initialHealth + 10 == newPlayer.getHealth());
     }
     
 }
