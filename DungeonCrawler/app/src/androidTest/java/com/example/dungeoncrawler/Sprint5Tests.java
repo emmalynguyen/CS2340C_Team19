@@ -6,9 +6,11 @@ import com.example.dungeoncrawler.models.AirEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.FireEnemy;
 import com.example.dungeoncrawler.models.Player;
+import com.example.dungeoncrawler.models.TeleportationPowerUp;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 import com.example.dungeoncrawler.models.HealthPowerUp;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -74,6 +76,26 @@ public class Sprint5Tests {
     }
 
     //Cole's Junits
+    @Test
+    public void checkTeleportationPowerUp() {
+        // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
+        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+        int initialX = newPlayer.getX();
+        int initialY = newPlayer.getY();
 
+        // Applying the teleportation power-up
+        TeleportationPowerUp teleportationPowerUp = new TeleportationPowerUp();
+        teleportationPowerUp.applyPowerUp(newPlayer);
+
+        // Asserting that the player's position has changed to the expected coordinates
+        Assert.assertNotEquals("Player's X-coordinate differs",
+                initialX, newPlayer.getX());
+        Assert.assertNotEquals("Player's Y-coordinate differs",
+                initialY, newPlayer.getY());
+        Assert.assertEquals("Player's X-coordinate 200",
+                200, newPlayer.getX());
+        Assert.assertEquals("Player's Y-coordinate 150",
+                150, newPlayer.getY());
+    }
     
 }
