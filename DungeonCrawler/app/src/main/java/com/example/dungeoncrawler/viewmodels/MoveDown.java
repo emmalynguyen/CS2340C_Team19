@@ -48,10 +48,11 @@ public class MoveDown implements PlayerMovement {
     @Override
     public boolean canMoveMap2() {
         if (OverarchingViewmodel.getPlayerY() >= 480
-                && (OverarchingViewmodel.getPlayerX() <= 900 || OverarchingViewmodel.getPlayerX() >= 1200)){
+                && (OverarchingViewmodel.getPlayerX() <= 900
+                || OverarchingViewmodel.getPlayerX() >= 1200)) {
             return false;
         }
-        return canMoveMap1() && true;
+        return canMoveMap1();
     }
 
     @Override
@@ -63,19 +64,5 @@ public class MoveDown implements PlayerMovement {
             }
         }
         return canMoveMap1();
-//        if (OverarchingViewmodel.getPlayerY() >= 580) {
-//            if (OverarchingViewmodel.getPlayerX() >= 1050
-//                    && OverarchingViewmodel.getPlayerX() <= 1090) {
-//                return true;
-//            }
-//            return false;
-//        }
-//        if (OverarchingViewmodel.getPlayerX() >= 980) {
-//            if (OverarchingViewmodel.getPlayerY() >= 190
-//                    && OverarchingViewmodel.getPlayerY() <= 290) {
-//                return false;
-//            }
-//        }
-//        return true;
     }
 }

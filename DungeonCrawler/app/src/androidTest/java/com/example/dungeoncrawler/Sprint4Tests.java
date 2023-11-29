@@ -89,13 +89,13 @@ public class Sprint4Tests implements Observer {
     @Test
     public void checkEarthEnemySprite() {
         EarthEnemy earth = new EarthEnemy();
-        assertEquals(2131165369,earth.getSprite());
+        assertEquals(2131165369, earth.getSprite());
     }
 
     @Test
     public void checkWaterEnemySprite() {
         WaterEnemy water = new WaterEnemy();
-        assertEquals(2131165370,water.getSprite());
+        assertEquals(2131165370, water.getSprite());
     }
 
     @Override

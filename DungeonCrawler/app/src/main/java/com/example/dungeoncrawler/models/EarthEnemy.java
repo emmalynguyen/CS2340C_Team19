@@ -25,34 +25,36 @@ public class EarthEnemy implements Enemy, Subject {
     }
 
 
-    public void move(){
+    public void move() {
         switch (direction) {
-            case 0:
-                x += speed;
-                break;
-            case 1:
-                y += speed;
-                break;
-            case 2:
-                x -= speed;
-                break;
-            case 3:
-                y -= speed;
-                direction = -1;
-                break;
+        case 0:
+            x += speed;
+            break;
+        case 1:
+            y += speed;
+            break;
+        case 2:
+            x -= speed;
+            break;
+        case 3:
+            y -= speed;
+            direction = -1;
+            break;
+        default:
+            break;
         }
         direction++;
 
     }
 
-    public boolean checkCollision(int x, int y){
-        if((this.y > y - 10 && this.y < y + 160)
+    public boolean checkCollision(int x, int y) {
+        if ((this.y > y - 10 && this.y < y + 160)
                 && (this.x > x - 20 && this.x < x + 150)) {
             return true;
         }
         return false;
     }
-    public void kill(){
+    public void kill() {
         OverarchingViewmodel.increaseScore(25 * OverarchingViewmodel.getPlayerDifficulty());
         setX(999999);
     }
@@ -77,9 +79,13 @@ public class EarthEnemy implements Enemy, Subject {
         return sprite;
     }
 
-    public int getSpeed() { return speed; }
+    public int getSpeed() {
+        return speed;
+    }
 
-    public void setSpeed(int speed) { this.speed = speed;}
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     public void setSprite(int sprite) {
         this.sprite = sprite;

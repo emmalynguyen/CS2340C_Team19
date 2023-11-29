@@ -22,25 +22,24 @@ public class AirEnemy implements Enemy, Subject {
         observers = new ArrayList<>();
     }
 
-    public void move(){
+    public void move() {
         x += speed;
-        if(x <= 835 && speed < 0) {
+        if (x <= 835 && speed < 0) {
             speed *= -1;
         }
-        if(x >= 1300 && speed > 0) {
+        if (x >= 1300 && speed > 0) {
             speed *= -1;
         }
-//        notifyObservers();
     }
 
-    public boolean checkCollision(int x, int y){
-        if((this.y > y - 10 && this.y < y + 160)
+    public boolean checkCollision(int x, int y) {
+        if ((this.y > y - 10 && this.y < y + 160)
               && (this.x > x - 20 && this.x < x + 150)) {
             return true;
         }
         return false;
     }
-    public void kill(){
+    public void kill() {
         OverarchingViewmodel.increaseScore(25 * OverarchingViewmodel.getPlayerDifficulty());
         setX(999999);
     }
@@ -69,9 +68,13 @@ public class AirEnemy implements Enemy, Subject {
         this.sprite = sprite;
     }
 
-    public int getSpeed() { return speed; }
+    public int getSpeed() {
+        return speed;
+    }
 
-    public void setSpeed(int speed) { this.speed = speed;}
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     @Override
     public void registerObserver(Observer observer) {
