@@ -39,13 +39,13 @@ public class EmmalyJUnits {
     public void checkEarthEnemySpeed() {
         EarthEnemy earth = new EarthEnemy();
         earth.setSpeed(20);
-        assertEquals(20,earth.getSpeed());
+        assertEquals(20, earth.getSpeed());
     }
 
     @Test
     public void checkWaterEnemySpeed() {
         WaterEnemy water = new WaterEnemy();
         water.setSpeed(35);
-        assertEquals(35,water.getSpeed());
+        assertEquals(35, water.getSpeed());
     }
 }

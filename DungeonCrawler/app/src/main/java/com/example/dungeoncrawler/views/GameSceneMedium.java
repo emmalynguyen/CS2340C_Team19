@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Enemy;
+import com.example.dungeoncrawler.models.HealthPowerUp;
+import com.example.dungeoncrawler.models.SpeedPowerUp;
+import com.example.dungeoncrawler.models.TeleportationPowerUp;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -68,6 +73,95 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         OverarchingViewmodel.addEnemy(earthEnemy2);
 
         update();
+        ImageView speedPowerUpImageView = findViewById(R.id.speedPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        speedPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applySpeedPowerUp();
+            }
+        });
+        ImageView healthPowerUpImageView = findViewById(R.id.healthPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        healthPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applyHealthPowerUp();
+            }
+        });
+        ImageView teleportationPowerUpImageView = findViewById(R.id.teleportationPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        teleportationPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applyTeleportationPowerUp();
+            }
+        });
+
+    }
+    private void applySpeedPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+        // Create a SpeedPowerUp instance
+        SpeedPowerUp speedPowerUp = new SpeedPowerUp();
+
+        // Apply the speed power-up to the player
+        speedPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+        // Hide the speed power-up image after it is collected
+        hideSpeedPowerUp();
+        Toast.makeText(this, speedPowerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideSpeedPowerUp() {
+        ImageView speedPowerUpImageView = findViewById(R.id.speedPowerUp);
+        speedPowerUpImageView.setVisibility(View.INVISIBLE);
+    }
+    private void applyHealthPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+        // Create a SpeedPowerUp instance
+        HealthPowerUp healthPowerUp = new HealthPowerUp();
+
+        // Apply the speed power-up to the player
+        healthPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+        // Hide the speed power-up image after it is collected
+        hideHealthPowerUp();
+        Toast.makeText(this, healthPowerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideHealthPowerUp() {
+        ImageView healthPowerUpImageView = findViewById(R.id.healthPowerUp);
+        healthPowerUpImageView.setVisibility(View.INVISIBLE);
+    }
+    private void applyTeleportationPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+        // Create a SpeedPowerUp instance
+        TeleportationPowerUp teleportationPowerUp = new TeleportationPowerUp();
+
+        // Apply the speed power-up to the player
+        teleportationPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+        // Hide the speed power-up image after it is collected
+        hideTeleportationPowerUp();
+        Toast.makeText(this, teleportationPowerUp.getName()
+                + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideTeleportationPowerUp() {
+        ImageView teleportationPowerUpImageView = findViewById(R.id.teleportationPowerUp);
+        teleportationPowerUpImageView.setVisibility(View.INVISIBLE);
     }
 
 
@@ -76,10 +170,15 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         ImageView spriteView = findViewById(R.id.spriteView);
         spriteView.setX(OverarchingViewmodel.getPlayerX());
         spriteView.setY(OverarchingViewmodel.getPlayerY());
+        if (OverarchingViewmodel.isOnFire()) {
+            spriteView.setImageResource(OverarchingViewmodel.getFireSprite());
+        } else {
+            spriteView.setImageResource(OverarchingViewmodel.getPlayerSprite());
+        }
 
         ArrayList<Enemy> enemies = OverarchingViewmodel.getEnemies();
 
-        if(enemies.size() >= 3){
+        if (enemies.size() >= 3) {
             ImageView monsterView = findViewById(R.id.monsterView);
             monsterView.setImageResource(enemies.get(0).getSprite());
             monsterView.setX(enemies.get(0).getX());
@@ -102,12 +201,18 @@ public class GameSceneMedium extends AppCompatActivity implements Observer {
         }
 
         for (Enemy enemy : enemies) {
-            if(enemy.checkCollision(OverarchingViewmodel.getPlayerX(), OverarchingViewmodel.getPlayerY())){
-                OverarchingViewmodel.decreaseScore(10 * OverarchingViewmodel.getPlayerDifficulty());
+            if (enemy.checkCollision(OverarchingViewmodel.getPlayerX(),
+                    OverarchingViewmodel.getPlayerY())) {
+                if (OverarchingViewmodel.isOnFire()) {
+                    enemy.kill();
+                } else {
+                    OverarchingViewmodel.decreaseScore(10
+                            * OverarchingViewmodel.getPlayerDifficulty());
+                }
             }
         }
 
-        if(OverarchingViewmodel.getCount() <= 0) {
+        if (OverarchingViewmodel.getCount() <= 0) {
             OverarchingViewmodel.removeObserver(this);
             OverarchingViewmodel.sceneToLeaderboard(GameSceneMedium.this, LoseEnding.class);
         }

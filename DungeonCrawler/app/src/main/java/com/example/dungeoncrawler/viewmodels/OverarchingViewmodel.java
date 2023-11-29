@@ -62,6 +62,7 @@ public class OverarchingViewmodel {
     private static void sceneChange(Context context, Class destination) {
         Intent intent = new Intent(context, destination);
         enemies = new ArrayList<>();
+        player.setSpeed(2);
         startActivity(context, intent, null);
         ((Activity) context).finish();
     }
@@ -225,7 +226,7 @@ public class OverarchingViewmodel {
             OverarchingViewmodel.setMovementStrategy(moveRight);
             move(step);
             break;
-        case KeyEvent.KEYCODE_SPACE:
+        case KeyEvent.KEYCODE_F:
             player.setFire(true);
             break;
         default:
@@ -260,12 +261,12 @@ public class OverarchingViewmodel {
     public static void removeObserver(Observer observer) {
         player.removeObserver(observer);
     }
-public static Player getPlayer(){
+    public static Player getPlayer() {
         return player;
-}
-public static Player setPlayer() {
+    }
+    public static Player setPlayer() {
         return player;
-}
+    }
     public static int getPlayerX() {
         return player.getX();
     }
@@ -283,10 +284,10 @@ public static Player setPlayer() {
     public static int getLevel() {
         return level;
     }
-    public static boolean isOnFire(){
+    public static boolean isOnFire() {
         return player.isFire();
     }
-    public static int getFireSprite(){
+    public static int getFireSprite() {
         return player.getFireSprite();
     }
 }

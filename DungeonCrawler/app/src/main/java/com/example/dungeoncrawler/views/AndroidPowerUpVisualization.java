@@ -7,11 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-
-import com.example.dungeoncrawler.R;
-
 
 import com.example.dungeoncrawler.models.Player;
 import com.example.dungeoncrawler.models.PowerUp;
@@ -23,7 +18,8 @@ public class AndroidPowerUpVisualization {
     private PowerUp powerUp;
     private ImageView imageView;
 
-    public AndroidPowerUpVisualization(Context context, ViewGroup parentView, PowerUp powerUp, int imageResource, int width, int height) {
+    public AndroidPowerUpVisualization(Context context,
+           ViewGroup parentView, PowerUp powerUp, int imageResource, int width, int height) {
         this.context = context;
         this.parentView = parentView;
         this.powerUp = powerUp;
