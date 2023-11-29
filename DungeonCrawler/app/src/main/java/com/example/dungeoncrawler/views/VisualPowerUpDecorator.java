@@ -15,7 +15,8 @@ public class VisualPowerUpDecorator implements PowerUp {
     private AndroidPowerUpVisualization powerUpVisualization;
 
 
-    public VisualPowerUpDecorator(PowerUp powerUp, AndroidPowerUpVisualization powerUpVisualization) {
+    public VisualPowerUpDecorator(PowerUp powerUp,
+                                  AndroidPowerUpVisualization powerUpVisualization) {
         this.powerUp = powerUp;
         this.powerUpVisualization = powerUpVisualization;
     }

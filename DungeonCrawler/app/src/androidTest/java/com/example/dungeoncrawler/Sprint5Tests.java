@@ -1,9 +1,8 @@
 package com.example.dungeoncrawler;
 
-import static android.view.KeyEvent.KEYCODE_SPACE;
+import static android.view.KeyEvent.KEYCODE_F;
 import static org.junit.Assert.assertTrue;
 
-import com.example.dungeoncrawler.models.AirEnemy;
 import com.example.dungeoncrawler.models.Enemy;
 import com.example.dungeoncrawler.models.FireEnemy;
 import com.example.dungeoncrawler.models.Player;
@@ -85,20 +84,17 @@ public class Sprint5Tests {
     //Emmaly's Junits
     @Test
     public void checkTeleportationPowerUp() {
-        // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
 
-        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+        Player newPlayer = Player.getPlayer();
 
         newPlayer.setX(5);
         newPlayer.setY(5);
         int initialX = newPlayer.getX();
         int initialY = newPlayer.getY();
 
-        // Applying the teleportation power-up
         TeleportationPowerUp teleportationPowerUp = new TeleportationPowerUp();
         teleportationPowerUp.applyPowerUp(newPlayer);
 
-        // Asserting that the player's position has changed to the expected coordinates
         Assert.assertNotEquals("Player's X-coordinate differs",
                 initialX, newPlayer.getX());
 
@@ -113,9 +109,8 @@ public class Sprint5Tests {
     }
 
     @Test
-    public void checkTeleportationPowerUpString(){
-        // Assuming Player class has a method to get a Player instance and methods to get X and Y coordinates
-        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+    public void checkTeleportationPowerUpString() {
+        Player newPlayer = Player.getPlayer();
 
         int initialX = newPlayer.getX();
 
@@ -133,7 +128,7 @@ public class Sprint5Tests {
     @Test
     public void checkSpeedIncrease() {
 
-        Player newPlayer = Player.getPlayer(); // or new Player(), depending on the Player class implementation
+        Player newPlayer = Player.getPlayer();
         int initialSpeed = newPlayer.getSpeed();
 
         // Applying the speed power-up
@@ -157,13 +152,13 @@ public class Sprint5Tests {
 
     // Cole's Junits
     @Test
-    public void checkOnFire(){
-        OverarchingViewmodel.keyDown(KEYCODE_SPACE);
+    public void checkOnFire() {
+        OverarchingViewmodel.keyDown(KEYCODE_F);
         Assert.assertTrue(OverarchingViewmodel.isOnFire());
     }
     @Test
-    public void checkOnFireRemove(){
-        OverarchingViewmodel.keyDown(12);
+    public void checkOnFireRemove() {
+        OverarchingViewmodel.keyDown(34);
         Assert.assertFalse(OverarchingViewmodel.isOnFire());
     }
 
