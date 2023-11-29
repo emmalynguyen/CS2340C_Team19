@@ -260,7 +260,12 @@ public class OverarchingViewmodel {
     public static void removeObserver(Observer observer) {
         player.removeObserver(observer);
     }
-
+public static Player getPlayer(){
+        return player;
+}
+public static Player setPlayer() {
+        return player;
+}
     public static int getPlayerX() {
         return player.getX();
     }
