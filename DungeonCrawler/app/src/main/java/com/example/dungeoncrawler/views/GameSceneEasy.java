@@ -11,12 +11,17 @@ import android.view.KeyEvent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dungeoncrawler.R;
 import com.example.dungeoncrawler.models.Enemy;
+import com.example.dungeoncrawler.models.HealthPowerUp;
+import com.example.dungeoncrawler.models.SpeedPowerUp;
+import com.example.dungeoncrawler.models.TeleportationPowerUp;
 import com.example.dungeoncrawler.viewmodels.Observer;
 import com.example.dungeoncrawler.viewmodels.OverarchingViewmodel;
 
@@ -75,7 +80,97 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
         OverarchingViewmodel.addEnemy(airEnemy);
         OverarchingViewmodel.addEnemy(fireEnemy);
         update();
+
+        ImageView speedPowerUpImageView = findViewById(R.id.speedPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        speedPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applySpeedPowerUp();
+            }
+        });
+        ImageView healthPowerUpImageView = findViewById(R.id.healthPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        healthPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applyHealthPowerUp();
+            }
+        });
+        ImageView teleportationPowerUpImageView = findViewById(R.id.teleportationPowerUp);
+
+        // Set OnClickListener for the speed power-up
+        teleportationPowerUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle speed power-up click
+                applyTeleportationPowerUp();
+            }
+        });
+
     }
+    private void applySpeedPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+            // Create a SpeedPowerUp instance
+            SpeedPowerUp speedPowerUp = new SpeedPowerUp();
+
+            // Apply the speed power-up to the player
+            speedPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+            // Hide the speed power-up image after it is collected
+            hideSpeedPowerUp();
+        Toast.makeText(this, speedPowerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideSpeedPowerUp() {
+        ImageView speedPowerUpImageView = findViewById(R.id.speedPowerUp);
+        speedPowerUpImageView.setVisibility(View.INVISIBLE);
+    }
+    private void applyHealthPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+        // Create a SpeedPowerUp instance
+        HealthPowerUp healthPowerUp = new HealthPowerUp();
+
+        // Apply the speed power-up to the player
+        healthPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+        // Hide the speed power-up image after it is collected
+        hideHealthPowerUp();
+        Toast.makeText(this, healthPowerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideHealthPowerUp() {
+        ImageView healthPowerUpImageView = findViewById(R.id.healthPowerUp);
+        healthPowerUpImageView.setVisibility(View.INVISIBLE);
+    }
+    private void applyTeleportationPowerUp() {
+        // Check if the player can collect the speed power-up (based on your game logic)
+
+        // Create a SpeedPowerUp instance
+        TeleportationPowerUp teleportationPowerUp = new TeleportationPowerUp();
+
+        // Apply the speed power-up to the player
+        teleportationPowerUp.applyPowerUp(OverarchingViewmodel.getPlayer());
+
+        // Hide the speed power-up image after it is collected
+        hideTeleportationPowerUp();
+        Toast.makeText(this, teleportationPowerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void hideTeleportationPowerUp() {
+        ImageView teleportationPowerUpImageView = findViewById(R.id.teleportationPowerUp);
+        teleportationPowerUpImageView.setVisibility(View.INVISIBLE);
+    }
+
 
 //    private void setPowerUpVisualization() {
 //        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
@@ -139,10 +234,31 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 //        });
 //
 //         */
+/*
+    private void setPowerUpVisualization() {
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
+        ConstraintSet constraintSet = new ConstraintSet();
+
+        int marginBetweenPowerUps = 20;
+        int previousPowerUpId = ConstraintSet.PARENT_ID;
+
+        // Health power-up visualization
+        AndroidPowerUpVisualization healthPowerUpVisualization = createPowerUpVisualization(constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, previousPowerUpId, marginBetweenPowerUps);
+        previousPowerUpId = healthPowerUpVisualization.getImageView().getId();
+
+        // Speed power-up visualization
+        AndroidPowerUpVisualization speedPowerUpVisualization = createPowerUpVisualization(constraintLayout, new SpeedPowerUp(), R.drawable.speed_powerup, previousPowerUpId, marginBetweenPowerUps);
+        previousPowerUpId = speedPowerUpVisualization.getImageView().getId();
+
+        // Teleportation power-up visualization
+        //AndroidPowerUpVisualization teleportationPowerUpVisualization = createPowerUpVisualization(constraintLayout, new TeleportationPowerUp(), R.drawable.tele_powerup, previousPowerUpId, marginBetweenPowerUps);
+        /*ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout); // Replace with your layout ID
+>>>>>>> Stashed changes
 
 
 //<<<<<<< Updated upstream
         // Create a ConstraintSet to dynamically set constraints
+<<<<<<< Updated upstream
 //        ConstraintSet constraintSet = new ConstraintSet();
 //
 //
@@ -212,6 +328,72 @@ public class GameSceneEasy extends AppCompatActivity implements Observer {
 //=======
 ////    }
 //>>>>>>> Stashed changes
+
+        /*ConstraintSet constraintSet = new ConstraintSet();
+
+
+        // Iterate over your power-ups and create visualizations
+        int numberOfPowerUps = 3;
+        int marginBetweenPowerUps = 20; // Adjust the margin between power-ups as needed
+        int previousPowerUpId = ConstraintSet.PARENT_ID;
+            // Create the power-up visualization
+            PowerUp powerUp = new HealthPowerUp();
+            AndroidPowerUpVisualization powerUpVisualization;
+            powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new HealthPowerUp(), R.drawable.health_powerup, 150, 150);
+
+            // Add constraints for the power-up visualization
+            constraintSet.clone(constraintLayout);
+            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, previousPowerUpId, ConstraintSet.TOP);
+            constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+
+            // Set margins or paddings as needed
+            int margin = 100 + 0 * marginBetweenPowerUps;; // Set your desired margin
+            constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+
+            // Apply constraints
+            constraintSet.applyTo(constraintLayout);
+
+            previousPowerUpId = powerUpVisualization.getImageView().getId();
+
+            // Display the power-up visualization
+            powerUpVisualization.display(view -> {
+                // Handle click event
+                // You can add logic here to apply the power-up or perform other actions
+                Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+            });*/
+
+            //teleportation powerup
+        /*powerUpVisualization = new AndroidPowerUpVisualization(this, constraintLayout, new TeleportationPowerUp(), R.drawable.health_powerup, 150, 150);
+        PowerUp powerUp1 = new TeleportationPowerUp();
+        powerUpVisualization.display(view -> {
+            // Handle click event
+            // You can add logic here to apply the power-up or perform other actions
+            Toast.makeText(this, powerUp1.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+        });
+
+        // Add constraints for the power-up visualization
+        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.TOP, previousPowerUpId, ConstraintSet.TOP);
+        constraintSet.connect(powerUpVisualization.getImageView().getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+
+        // Set margins or paddings as needed
+        margin = 100 + 1 * marginBetweenPowerUps;; // Set your desired margin
+        constraintSet.setMargin(powerUpVisualization.getImageView().getId(), ConstraintSet.BOTTOM, margin);
+
+        // Apply constraints
+        constraintSet.applyTo(constraintLayout);
+
+        previousPowerUpId = powerUpVisualization.getImageView().getId();
+
+        // Display the power-up visualization
+        powerUpVisualization.display(view -> {
+            // Handle click event
+            // You can add logic here to apply the power-up or perform other actions
+            Toast.makeText(this, powerUp.getName() + " clicked!", Toast.LENGTH_SHORT).show();
+        });
+
+         */
+
+
 
 
 

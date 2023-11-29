@@ -6,7 +6,7 @@ public class SpeedPowerUp implements PowerUp {
     public void applyPowerUp(Player player) {
         // Implement the logic to increase player's movement speed
         int currentSpeed = player.getSpeed();
-        player.setSpeed(currentSpeed + 1); // Example: Increase speed by 1
+        player.setSpeed(currentSpeed + 10); // Example: Increase speed by 1
     }
 
     @Override
